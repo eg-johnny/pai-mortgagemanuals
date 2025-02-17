@@ -1,0 +1,25 @@
+name: Update Main from Upstream
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  update-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Add Upstream Remote
+        run: git remote add upstream https://github.com/Azure-Samples/azure-search-openai-demo.git || true
+
+      - name: Fetch Upstream Changes
+        run: git fetch upstream
+
+      - name: Merge Upstream into Main
+        run: |
+          git checkout main
+          git merge upstream/main --no-edit || true
+          git push origin main
