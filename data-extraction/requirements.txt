@@ -1,0 +1,11 @@
+asyncio
+crawl4ai
+azure-storage-blob
+python-dotenv
+logging
+requests
+beautifulsoup4
+scrapy
+twisted
+selenium
+webdriver-manager
