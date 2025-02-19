@@ -110,7 +110,8 @@ class ChatApproach(Approach, ABC):
         session_state: Any = None,
         context: dict[str, Any] = {},
     ) -> dict[str, Any]:
-        overrides = context.get("overrides", {})
+        # For developer settings
+        overrides = context.get("overrides", {}) 
         auth_claims = context.get("auth_claims", {})
         return await self.run_without_streaming(messages, overrides, auth_claims, session_state)
 

@@ -167,28 +167,28 @@ async def content_file(path: str, auth_claims: Dict[str, Any]):
     blob_file.seek(0)
     return await send_file(blob_file, mimetype=mime_type, as_attachment=False, attachment_filename=path)
 
-
-@bp.route("/ask", methods=["POST"])
-@authenticated
-async def ask(auth_claims: Dict[str, Any]):
-    if not request.is_json:
-        return jsonify({"error": "request must be json"}), 415
-    request_json = await request.get_json()
-    context = request_json.get("context", {})
-    context["auth_claims"] = auth_claims
-    try:
-        use_gpt4v = context.get("overrides", {}).get("use_gpt4v", False)
-        approach: Approach
-        if use_gpt4v and CONFIG_ASK_VISION_APPROACH in current_app.config:
-            approach = cast(Approach, current_app.config[CONFIG_ASK_VISION_APPROACH])
-        else:
-            approach = cast(Approach, current_app.config[CONFIG_ASK_APPROACH])
-        r = await approach.run(
-            request_json["messages"], context=context, session_state=request_json.get("session_state")
-        )
-        return jsonify(r)
-    except Exception as error:
-        return error_response(error, "/ask")
+# Remove ask page functionality
+# @bp.route("/ask", methods=["POST"])
+# @authenticated
+# async def ask(auth_claims: Dict[str, Any]):
+#     if not request.is_json:
+#         return jsonify({"error": "request must be json"}), 415
+#     request_json = await request.get_json()
+#     context = request_json.get("context", {})
+#     context["auth_claims"] = auth_claims
+#     try:
+#         use_gpt4v = context.get("overrides", {}).get("use_gpt4v", False)
+#         approach: Approach
+#         if use_gpt4v and CONFIG_ASK_VISION_APPROACH in current_app.config:
+#             approach = cast(Approach, current_app.config[CONFIG_ASK_VISION_APPROACH])
+#         else:
+#             approach = cast(Approach, current_app.config[CONFIG_ASK_APPROACH])
+#         r = await approach.run(
+#             request_json["messages"], context=context, session_state=request_json.get("session_state")
+#         )
+#         return jsonify(r)
+#     except Exception as error:
+#         return error_response(error, "/ask")
 
 
 class JSONEncoder(json.JSONEncoder):

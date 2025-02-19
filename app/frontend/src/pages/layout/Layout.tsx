@@ -52,7 +52,8 @@ const Layout = () => {
                                     {t("chat")}
                                 </NavLink>
                             </li>
-                            <li>
+                            {/* Removes the ask page */}
+                            {/* <li>
                                 <NavLink
                                     to="/qa"
                                     className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
@@ -60,7 +61,7 @@ const Layout = () => {
                                 >
                                     {t("qa")}
                                 </NavLink>
-                            </li>
+                            </li> */}
                         </ul>
                     </nav>
                     <div className={styles.loginMenuContainer}>
