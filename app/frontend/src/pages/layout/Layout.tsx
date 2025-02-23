@@ -41,7 +41,8 @@ const Layout = () => {
                     <Link to="/" className={styles.headerTitleContainer}>
                         <h3 className={styles.headerTitle}>{t("headerTitle")}</h3>
                     </Link>
-                    <nav>
+                    {/* Removes navigation at the top banner */}
+                    {/* <nav>
                         <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
                             <li>
                                 <NavLink
@@ -52,8 +53,7 @@ const Layout = () => {
                                     {t("chat")}
                                 </NavLink>
                             </li>
-                            {/* Removes the ask page */}
-                            {/* <li>
+                            <li>
                                 <NavLink
                                     to="/qa"
                                     className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
@@ -61,9 +61,9 @@ const Layout = () => {
                                 >
                                     {t("qa")}
                                 </NavLink>
-                            </li> */}
+                            </li>
                         </ul>
-                    </nav>
+                    </nav> */}
                     <div className={styles.loginMenuContainer}>
                         {useLogin && <LoginButton />}
                         <IconButton
