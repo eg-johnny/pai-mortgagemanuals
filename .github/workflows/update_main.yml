@@ -6,11 +6,17 @@ on:
 jobs:
   update-main:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: Set up Git user
+        run: |
+          git config user.email "placeholder@example.com"
+          git config user.name "GitHub Action"
 
       - name: Add Upstream Remote
         run: git remote add upstream https://github.com/Azure-Samples/azure-search-openai-demo.git || true
@@ -18,8 +24,27 @@ jobs:
       - name: Fetch Upstream Changes
         run: git fetch upstream
 
-      - name: Merge Upstream into Main
+      - name: Create Update Branch
         run: |
-          git checkout main
-          git merge upstream/main
-          git push origin main
+          git checkout -b update-upstream-main
+          git merge upstream/main || true  # Allow merge conflicts
+
+      - name: Commit Merge Conflicts (if any)
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            git add .
+            git commit -m "Auto-merge upstream/main with conflicts (to be resolved in PR)" || true
+          fi
+
+      - name: Push Update Branch
+        run: git push origin update-upstream-main --force
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: update-upstream-main
+          base: main
+          title: "Update main from upstream"
+          body: "Merging changes from upstream/main. **Resolve conflicts in this PR before merging.**"
+          labels: "automated pr, needs review"
+          assignees: "PrimoRileyEntelligage"
