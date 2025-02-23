@@ -18,10 +18,10 @@ const router = createHashRouter([
         path: "/",
         element: <LayoutWrapper />,
         children: [
-            {
-                index: true,
-                element: <Chat />
-            },
+            // {
+            //     index: true,
+            //     element: <Chat />
+            // },
             // Removes the ask page
             // {
             //     path: "qa",
