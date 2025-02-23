@@ -9,3 +9,5 @@ scrapy
 twisted
 selenium
 webdriver-manager
+pytube
+youtube-transcript-api
