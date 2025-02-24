@@ -28,7 +28,8 @@ jobs:
       - name: Create Update Branch
         run: |
           git checkout -b update-upstream-main
-          git merge upstream/main --no-commit || true  # Allow merge conflicts
+          git merge -X theirs upstream/main --no-commit || true  # Always prefer upstream changes
+      
 
       - name: Exclude Workflow Changes
         run: |
