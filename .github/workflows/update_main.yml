@@ -27,13 +27,18 @@ jobs:
       - name: Create Update Branch
         run: |
           git checkout -b update-upstream-main
-          git merge upstream/main || true  # Allow merge conflicts
+          git merge upstream/main --no-commit || true  # Allow merge conflicts
+
+      - name: Exclude Workflow Changes
+        run: |
+          git reset HEAD .github/workflows/ || true  # Remove workflow files from staging
+          git checkout -- .github/workflows/ || true  # Revert workflow files to original state
 
       - name: Commit Merge Conflicts (if any)
         run: |
           if [[ -n $(git status --porcelain) ]]; then
             git add .
-            git commit -m "Auto-merge upstream/main with conflicts (to be resolved in PR)" || true
+            git commit -m "Auto-merge upstream/main with conflicts (to be resolved in PR, workflows excluded)" || true
           fi
 
       - name: Push Update Branch
@@ -45,6 +50,6 @@ jobs:
           branch: update-upstream-main
           base: main
           title: "Update main from upstream"
-          body: "Merging changes from upstream/main. **Resolve conflicts in this PR before merging.**"
+          body: "Merging changes from upstream/main. **Resolve conflicts in this PR before merging. Workflows are excluded from this merge.**"
           labels: "automated pr, needs review"
           assignees: "PrimoRileyEntelligage"
