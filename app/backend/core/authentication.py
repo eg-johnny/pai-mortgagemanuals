@@ -1,5 +1,6 @@
 # Refactored from https://github.com/Azure-Samples/ms-identity-python-on-behalf-of
-
+import ssl
+import certifi
 import base64
 import json
 import logging
@@ -42,7 +43,6 @@ class AuthenticationHelper:
         server_app_secret: Optional[str],
         client_app_id: Optional[str],
         tenant_id: Optional[str],
-        tenant_name: Optional[str],
         require_access_control: bool = False,
         enable_global_documents: bool = False,
         enable_unauthenticated_access: bool = False,
@@ -52,15 +52,12 @@ class AuthenticationHelper:
         self.server_app_secret = server_app_secret
         self.client_app_id = client_app_id
         self.tenant_id = tenant_id
-        self.authority = f"https://{tenant_name}.ciamlogin.com/{tenant_id}" if tenant_name else f"https://login.microsoftonline.com/{tenant_id}"
+        self.authority = f"https://{tenant_id}.ciamlogin.com/{tenant_id}" 
         # Depending on if requestedAccessTokenVersion is 1 or 2, the issuer and audience of the token may be different
         # See https://learn.microsoft.com/graph/api/resources/apiapplication
         self.valid_issuers = [
-            f"https://sts.windows.net/{tenant_id}/",
-            f"https://login.microsoftonline.com/{tenant_id}/v2.0",
+            f"https://{tenant_id}.ciamlogin.com/{tenant_id}/v2.0",
         ]
-        if tenant_name:
-            self.valid_issuers.append(f"https://{tenant_name}.ciamlogin.com/{tenant_id}/v2.0")
         self.valid_audiences = [f"api://{server_app_id}", str(server_app_id)]
         # See https://learn.microsoft.com/entra/identity-platform/access-tokens#validate-the-issuer for more information on token validation
         self.key_url = f"{self.authority}/discovery/v2.0/keys"
@@ -183,9 +180,11 @@ class AuthenticationHelper:
 
     @staticmethod
     async def list_groups(graph_resource_access_token: dict) -> list[str]:
+        ssl_context = ssl.create_default_context(cafile=certifi.where())
+        conn = aiohttp.TCPConnector(ssl=ssl_context)
         headers = {"Authorization": "Bearer " + graph_resource_access_token["access_token"]}
         groups = []
-        async with aiohttp.ClientSession(headers=headers) as session:
+        async with aiohttp.ClientSession(headers=headers,connector=conn) as session:
             resp_json = None
             resp_status = None
             async with session.get(url="https://graph.microsoft.com/v1.0/me/transitiveMemberOf?$select=id") as resp:
@@ -310,6 +309,8 @@ class AuthenticationHelper:
         """
         Validate an access token is issued by Entra
         """
+        ssl_context = ssl.create_default_context(cafile=certifi.where())
+        conn = aiohttp.TCPConnector(ssl=ssl_context)
         jwks = None
         async for attempt in AsyncRetrying(
             retry=retry_if_exception_type(AuthError),
@@ -317,7 +318,7 @@ class AuthenticationHelper:
             stop=stop_after_attempt(5),
         ):
             with attempt:
-                async with aiohttp.ClientSession() as session:
+                async with aiohttp.ClientSession(connector=conn) as session:
                     async with session.get(url=self.key_url) as resp:
                         resp_status = resp.status
                         if resp_status in [500, 502, 503, 504]:

@@ -35,6 +35,7 @@ param storageAccountName string = '' // Set in main.parameters.json
 param storageResourceGroupName string = '' // Set in main.parameters.json
 param storageResourceGroupLocation string = location
 param storageContainerName string = 'content'
+param assetStorageContainerName string = 'assets'
 param storageSkuName string // Set in main.parameters.json
 
 param userStorageAccountName string = ''
@@ -251,7 +252,7 @@ var resourceToken = toLower(uniqueString(subscription().id, environmentName, loc
 var tags = { 'azd-env-name': environmentName }
 
 var tenantIdForAuth = !empty(authTenantId) ? authTenantId : tenantId
-var authenticationIssuerUri = '${environment().authentication.loginEndpoint}${tenantIdForAuth}/v2.0'
+var authenticationIssuerUri = 'https://${tenantIdForAuth}.ciamlogin.com/${tenantIdForAuth}/v2.0'
 
 @description('Whether the deployment is running on GitHub Actions')
 param runningOnGh string = ''
@@ -755,8 +756,9 @@ module storage 'core/storage/storage-account.bicep' = {
     tags: tags
     publicNetworkAccess: publicNetworkAccess
     bypass: bypass
-    allowBlobPublicAccess: false
+    allowBlobPublicAccess: true
     allowSharedKeyAccess: false
+    isHnsEnabled: true
     sku: {
       name: storageSkuName
     }
@@ -772,6 +774,10 @@ module storage 'core/storage/storage-account.bicep' = {
       {
         name: tokenStorageContainerName
         publicAccess: 'None'
+      }
+      {
+        name: assetStorageContainerName
+        publicAccess: 'Blob'
       }
     ]
   }
@@ -790,7 +796,7 @@ module userStorage 'core/storage/storage-account.bicep' = if (useUserUpload) {
     bypass: bypass
     allowBlobPublicAccess: false
     allowSharedKeyAccess: false
-    isHnsEnabled: true
+    isHnsEnabled: false
     sku: {
       name: storageSkuName
     }
