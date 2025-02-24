@@ -27,14 +27,14 @@ def get_file_diff(file_path):
 
 def prepend_to_changelog(new_content):
     changelog_path = "CHANGELOG.md"
-    # if os.path.exists(changelog_path):
-    #     with open(changelog_path, "r") as f:
-    #         existing_content = f.read()
-    # else:
-    #     existing_content = ""
+    if os.path.exists(changelog_path):
+        with open(changelog_path, "r") as f:
+            existing_content = f.read()
+    else:
+        existing_content = ""
 
-    with open(changelog_path, "a") as f:
-        f.write(new_content + "\n\n")
+    with open(changelog_path, "w") as f:
+        f.write(new_content + "\n\n" + existing_content)
 
 def main():
     repo_path = os.getcwd()

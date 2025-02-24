@@ -1,4 +1,1493 @@
 ---
+Generated on: 2025-02-24 13:46:29
+
+### Changes made:
+
+- .azure/pai-mm-prod/.env-temp
+- CHANGELOG.md
+- app/backend/prepdocslib/searchmanager.py
+- scripts/generate_git_commit_message.py
+
+### Detailed changes:
+
+#### .azure/pai-mm-prod/.env-temp
+diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
+index adad91f..2983b9f 100644
+--- a/.azure/pai-mm-prod/.env-temp
++++ b/.azure/pai-mm-prod/.env-temp
+@@ -1,5 +1,4 @@
+ AZURE_AUTH_TENANT_ID=""
+-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
+ AZURE_COSMOSDB_LOCATION="centralus"
+ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
+ AZURE_ENFORCE_ACCESS_CONTROL="true"
+#### CHANGELOG.md
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 4028629..e1deb67 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,3 +1,640 @@
++---
++Generated on: 2025-02-24 13:46:12
++
++### Changes made:
++
++- .azure/pai-mm-prod/.env-temp
++- CHANGELOG.md
++- app/backend/prepdocslib/searchmanager.py
++- scripts/generate_git_commit_message.py
++
++### Detailed changes:
++
++#### .azure/pai-mm-prod/.env-temp
++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
++index adad91f..2983b9f 100644
++--- a/.azure/pai-mm-prod/.env-temp
+++++ b/.azure/pai-mm-prod/.env-temp
++@@ -1,5 +1,4 @@
++ AZURE_AUTH_TENANT_ID=""
++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
++ AZURE_COSMOSDB_LOCATION="centralus"
++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
++ AZURE_ENFORCE_ACCESS_CONTROL="true"
++#### CHANGELOG.md
++diff --git a/CHANGELOG.md b/CHANGELOG.md
++index 4028629..0b174a3 100644
++--- a/CHANGELOG.md
+++++ b/CHANGELOG.md
++@@ -1,3 +1,214 @@
+++---
+++Generated on: 2025-02-24 13:46:08
+++
+++### Changes made:
+++
+++- .azure/pai-mm-prod/.env-temp
+++- CHANGELOG.md
+++- app/backend/prepdocslib/searchmanager.py
+++- scripts/generate_git_commit_message.py
+++
+++### Detailed changes:
+++
+++#### .azure/pai-mm-prod/.env-temp
+++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
+++index adad91f..2983b9f 100644
+++--- a/.azure/pai-mm-prod/.env-temp
++++++ b/.azure/pai-mm-prod/.env-temp
+++@@ -1,5 +1,4 @@
+++ AZURE_AUTH_TENANT_ID=""
+++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
+++ AZURE_COSMOSDB_LOCATION="centralus"
+++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
+++ AZURE_ENFORCE_ACCESS_CONTROL="true"
+++#### CHANGELOG.md
+++diff --git a/CHANGELOG.md b/CHANGELOG.md
+++index 4028629..e7e4c54 100644
+++--- a/CHANGELOG.md
++++++ b/CHANGELOG.md
+++@@ -2151,3 +2151,101 @@ index dd2d488..44a233f 100644
+++ \ No newline at end of file
+++ 
+++ 
++++---
++++Generated on: 2025-02-24 13:41:14
++++
++++### Changes made:
++++
++++- .azure/pai-mm-prod/.env-temp
++++- app/backend/prepdocslib/searchmanager.py
++++- scripts/generate_git_commit_message.py
++++
++++### Detailed changes:
++++
++++#### .azure/pai-mm-prod/.env-temp
++++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
++++index adad91f..2983b9f 100644
++++--- a/.azure/pai-mm-prod/.env-temp
+++++++ b/.azure/pai-mm-prod/.env-temp
++++@@ -1,5 +1,4 @@
++++ AZURE_AUTH_TENANT_ID=""
++++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
++++ AZURE_COSMOSDB_LOCATION="centralus"
++++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
++++ AZURE_ENFORCE_ACCESS_CONTROL="true"
++++#### app/backend/prepdocslib/searchmanager.py
++++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
++++index f75af03..314e4fd 100644
++++--- a/app/backend/prepdocslib/searchmanager.py
+++++++ b/app/backend/prepdocslib/searchmanager.py
++++@@ -103,7 +103,11 @@ class SearchManager:
++++                         vector_search_dimensions=self.embedding_dimensions,
++++                         vector_search_profile_name="embedding_config",
++++                     ),
++++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
+++++                    SimpleField(
+++++                        name="category", 
+++++                        type="Edm.String", 
+++++                        filterable=True, 
+++++                        facetable=True),
++++                     SimpleField(
++++                         name="sourcepage",
++++                         type="Edm.String",
++++@@ -122,22 +126,18 @@ class SearchManager:
++++                         filterable=True,
++++                         facetable=False,
++++                     ),
++++-                ]
++++-                if self.use_acls:
++++-                    fields.append(
++++-                        SimpleField(
++++-                            name="oids",
++++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++-                            filterable=True,
++++-                        )
++++-                    )
++++-                    fields.append(
++++-                        SimpleField(
++++-                            name="groups",
++++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++-                            filterable=True,
++++-                        )
+++++                    SimpleField(
+++++                        name="oids",
+++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++++                        filterable=True,
+++++                    ),
+++++                    SimpleField(
+++++                        name="groups",
+++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++++                        filterable=True,
++++                     )
+++++                ]
+++++                    
++++                 if self.use_int_vectorization:
++++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
++++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
++++#### scripts/generate_git_commit_message.py
++++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
++++index 171fb03..00790e8 100644
++++--- a/scripts/generate_git_commit_message.py
+++++++ b/scripts/generate_git_commit_message.py
++++@@ -27,11 +27,11 @@ def get_file_diff(file_path):
++++ 
++++ def prepend_to_changelog(new_content):
++++     changelog_path = "CHANGELOG.md"
++++-    # if os.path.exists(changelog_path):
++++-    #     with open(changelog_path, "r") as f:
++++-    #         existing_content = f.read()
++++-    # else:
++++-    #     existing_content = ""
+++++    if os.path.exists(changelog_path):
+++++        with open(changelog_path, "r") as f:
+++++            existing_content = f.read()
+++++    else:
+++++        existing_content = ""
++++ 
++++     with open(changelog_path, "a") as f:
++++         f.write(new_content + "\n\n")
++++
++++
+++#### app/backend/prepdocslib/searchmanager.py
+++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
+++index f75af03..314e4fd 100644
+++--- a/app/backend/prepdocslib/searchmanager.py
++++++ b/app/backend/prepdocslib/searchmanager.py
+++@@ -103,7 +103,11 @@ class SearchManager:
+++                         vector_search_dimensions=self.embedding_dimensions,
+++                         vector_search_profile_name="embedding_config",
+++                     ),
+++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
++++                    SimpleField(
++++                        name="category", 
++++                        type="Edm.String", 
++++                        filterable=True, 
++++                        facetable=True),
+++                     SimpleField(
+++                         name="sourcepage",
+++                         type="Edm.String",
+++@@ -122,22 +126,18 @@ class SearchManager:
+++                         filterable=True,
+++                         facetable=False,
+++                     ),
+++-                ]
+++-                if self.use_acls:
+++-                    fields.append(
+++-                        SimpleField(
+++-                            name="oids",
+++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++-                            filterable=True,
+++-                        )
+++-                    )
+++-                    fields.append(
+++-                        SimpleField(
+++-                            name="groups",
+++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++-                            filterable=True,
+++-                        )
++++                    SimpleField(
++++                        name="oids",
++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++                        filterable=True,
++++                    ),
++++                    SimpleField(
++++                        name="groups",
++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++                        filterable=True,
+++                     )
++++                ]
++++                    
+++                 if self.use_int_vectorization:
+++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
+++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
+++#### scripts/generate_git_commit_message.py
+++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
+++index 171fb03..13254af 100644
+++--- a/scripts/generate_git_commit_message.py
++++++ b/scripts/generate_git_commit_message.py
+++@@ -27,14 +27,14 @@ def get_file_diff(file_path):
+++ 
+++ def prepend_to_changelog(new_content):
+++     changelog_path = "CHANGELOG.md"
+++-    # if os.path.exists(changelog_path):
+++-    #     with open(changelog_path, "r") as f:
+++-    #         existing_content = f.read()
+++-    # else:
+++-    #     existing_content = ""
++++    if os.path.exists(changelog_path):
++++        with open(changelog_path, "r") as f:
++++            existing_content = f.read()
++++    else:
++++        existing_content = ""
+++ 
+++-    with open(changelog_path, "a") as f:
+++-        f.write(new_content + "\n\n")
++++    with open(changelog_path, "w") as f:
++++        f.write(new_content + "\n\n" + existing_content)
+++ 
+++ def main():
+++     repo_path = os.getcwd()
+++
+++
++ ---
++ Generated on: 2025-02-24 12:05:03
++ 
++@@ -2151,3 +2362,101 @@ index dd2d488..44a233f 100644
++ \ No newline at end of file
++ 
++ 
+++---
+++Generated on: 2025-02-24 13:41:14
+++
+++### Changes made:
+++
+++- .azure/pai-mm-prod/.env-temp
+++- app/backend/prepdocslib/searchmanager.py
+++- scripts/generate_git_commit_message.py
+++
+++### Detailed changes:
+++
+++#### .azure/pai-mm-prod/.env-temp
+++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
+++index adad91f..2983b9f 100644
+++--- a/.azure/pai-mm-prod/.env-temp
++++++ b/.azure/pai-mm-prod/.env-temp
+++@@ -1,5 +1,4 @@
+++ AZURE_AUTH_TENANT_ID=""
+++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
+++ AZURE_COSMOSDB_LOCATION="centralus"
+++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
+++ AZURE_ENFORCE_ACCESS_CONTROL="true"
+++#### app/backend/prepdocslib/searchmanager.py
+++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
+++index f75af03..314e4fd 100644
+++--- a/app/backend/prepdocslib/searchmanager.py
++++++ b/app/backend/prepdocslib/searchmanager.py
+++@@ -103,7 +103,11 @@ class SearchManager:
+++                         vector_search_dimensions=self.embedding_dimensions,
+++                         vector_search_profile_name="embedding_config",
+++                     ),
+++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
++++                    SimpleField(
++++                        name="category", 
++++                        type="Edm.String", 
++++                        filterable=True, 
++++                        facetable=True),
+++                     SimpleField(
+++                         name="sourcepage",
+++                         type="Edm.String",
+++@@ -122,22 +126,18 @@ class SearchManager:
+++                         filterable=True,
+++                         facetable=False,
+++                     ),
+++-                ]
+++-                if self.use_acls:
+++-                    fields.append(
+++-                        SimpleField(
+++-                            name="oids",
+++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++-                            filterable=True,
+++-                        )
+++-                    )
+++-                    fields.append(
+++-                        SimpleField(
+++-                            name="groups",
+++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++-                            filterable=True,
+++-                        )
++++                    SimpleField(
++++                        name="oids",
++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++                        filterable=True,
++++                    ),
++++                    SimpleField(
++++                        name="groups",
++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++                        filterable=True,
+++                     )
++++                ]
++++                    
+++                 if self.use_int_vectorization:
+++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
+++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
+++#### scripts/generate_git_commit_message.py
+++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
+++index 171fb03..00790e8 100644
+++--- a/scripts/generate_git_commit_message.py
++++++ b/scripts/generate_git_commit_message.py
+++@@ -27,11 +27,11 @@ def get_file_diff(file_path):
+++ 
+++ def prepend_to_changelog(new_content):
+++     changelog_path = "CHANGELOG.md"
+++-    # if os.path.exists(changelog_path):
+++-    #     with open(changelog_path, "r") as f:
+++-    #         existing_content = f.read()
+++-    # else:
+++-    #     existing_content = ""
++++    if os.path.exists(changelog_path):
++++        with open(changelog_path, "r") as f:
++++            existing_content = f.read()
++++    else:
++++        existing_content = ""
+++ 
+++     with open(changelog_path, "a") as f:
+++         f.write(new_content + "\n\n")
+++
+++
++#### app/backend/prepdocslib/searchmanager.py
++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
++index f75af03..314e4fd 100644
++--- a/app/backend/prepdocslib/searchmanager.py
+++++ b/app/backend/prepdocslib/searchmanager.py
++@@ -103,7 +103,11 @@ class SearchManager:
++                         vector_search_dimensions=self.embedding_dimensions,
++                         vector_search_profile_name="embedding_config",
++                     ),
++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
+++                    SimpleField(
+++                        name="category", 
+++                        type="Edm.String", 
+++                        filterable=True, 
+++                        facetable=True),
++                     SimpleField(
++                         name="sourcepage",
++                         type="Edm.String",
++@@ -122,22 +126,18 @@ class SearchManager:
++                         filterable=True,
++                         facetable=False,
++                     ),
++-                ]
++-                if self.use_acls:
++-                    fields.append(
++-                        SimpleField(
++-                            name="oids",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
++-                    )
++-                    fields.append(
++-                        SimpleField(
++-                            name="groups",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
+++                    SimpleField(
+++                        name="oids",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
+++                    ),
+++                    SimpleField(
+++                        name="groups",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
++                     )
+++                ]
+++                    
++                 if self.use_int_vectorization:
++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
++#### scripts/generate_git_commit_message.py
++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
++index 171fb03..13254af 100644
++--- a/scripts/generate_git_commit_message.py
+++++ b/scripts/generate_git_commit_message.py
++@@ -27,14 +27,14 @@ def get_file_diff(file_path):
++ 
++ def prepend_to_changelog(new_content):
++     changelog_path = "CHANGELOG.md"
++-    # if os.path.exists(changelog_path):
++-    #     with open(changelog_path, "r") as f:
++-    #         existing_content = f.read()
++-    # else:
++-    #     existing_content = ""
+++    if os.path.exists(changelog_path):
+++        with open(changelog_path, "r") as f:
+++            existing_content = f.read()
+++    else:
+++        existing_content = ""
++ 
++-    with open(changelog_path, "a") as f:
++-        f.write(new_content + "\n\n")
+++    with open(changelog_path, "w") as f:
+++        f.write(new_content + "\n\n" + existing_content)
++ 
++ def main():
++     repo_path = os.getcwd()
++
++
++---
++Generated on: 2025-02-24 13:46:08
++
++### Changes made:
++
++- .azure/pai-mm-prod/.env-temp
++- CHANGELOG.md
++- app/backend/prepdocslib/searchmanager.py
++- scripts/generate_git_commit_message.py
++
++### Detailed changes:
++
++#### .azure/pai-mm-prod/.env-temp
++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
++index adad91f..2983b9f 100644
++--- a/.azure/pai-mm-prod/.env-temp
+++++ b/.azure/pai-mm-prod/.env-temp
++@@ -1,5 +1,4 @@
++ AZURE_AUTH_TENANT_ID=""
++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
++ AZURE_COSMOSDB_LOCATION="centralus"
++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
++ AZURE_ENFORCE_ACCESS_CONTROL="true"
++#### CHANGELOG.md
++diff --git a/CHANGELOG.md b/CHANGELOG.md
++index 4028629..e7e4c54 100644
++--- a/CHANGELOG.md
+++++ b/CHANGELOG.md
++@@ -2151,3 +2151,101 @@ index dd2d488..44a233f 100644
++ \ No newline at end of file
++ 
++ 
+++---
+++Generated on: 2025-02-24 13:41:14
+++
+++### Changes made:
+++
+++- .azure/pai-mm-prod/.env-temp
+++- app/backend/prepdocslib/searchmanager.py
+++- scripts/generate_git_commit_message.py
+++
+++### Detailed changes:
+++
+++#### .azure/pai-mm-prod/.env-temp
+++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
+++index adad91f..2983b9f 100644
+++--- a/.azure/pai-mm-prod/.env-temp
++++++ b/.azure/pai-mm-prod/.env-temp
+++@@ -1,5 +1,4 @@
+++ AZURE_AUTH_TENANT_ID=""
+++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
+++ AZURE_COSMOSDB_LOCATION="centralus"
+++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
+++ AZURE_ENFORCE_ACCESS_CONTROL="true"
+++#### app/backend/prepdocslib/searchmanager.py
+++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
+++index f75af03..314e4fd 100644
+++--- a/app/backend/prepdocslib/searchmanager.py
++++++ b/app/backend/prepdocslib/searchmanager.py
+++@@ -103,7 +103,11 @@ class SearchManager:
+++                         vector_search_dimensions=self.embedding_dimensions,
+++                         vector_search_profile_name="embedding_config",
+++                     ),
+++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
++++                    SimpleField(
++++                        name="category", 
++++                        type="Edm.String", 
++++                        filterable=True, 
++++                        facetable=True),
+++                     SimpleField(
+++                         name="sourcepage",
+++                         type="Edm.String",
+++@@ -122,22 +126,18 @@ class SearchManager:
+++                         filterable=True,
+++                         facetable=False,
+++                     ),
+++-                ]
+++-                if self.use_acls:
+++-                    fields.append(
+++-                        SimpleField(
+++-                            name="oids",
+++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++-                            filterable=True,
+++-                        )
+++-                    )
+++-                    fields.append(
+++-                        SimpleField(
+++-                            name="groups",
+++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++-                            filterable=True,
+++-                        )
++++                    SimpleField(
++++                        name="oids",
++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++                        filterable=True,
++++                    ),
++++                    SimpleField(
++++                        name="groups",
++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++                        filterable=True,
+++                     )
++++                ]
++++                    
+++                 if self.use_int_vectorization:
+++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
+++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
+++#### scripts/generate_git_commit_message.py
+++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
+++index 171fb03..00790e8 100644
+++--- a/scripts/generate_git_commit_message.py
++++++ b/scripts/generate_git_commit_message.py
+++@@ -27,11 +27,11 @@ def get_file_diff(file_path):
+++ 
+++ def prepend_to_changelog(new_content):
+++     changelog_path = "CHANGELOG.md"
+++-    # if os.path.exists(changelog_path):
+++-    #     with open(changelog_path, "r") as f:
+++-    #         existing_content = f.read()
+++-    # else:
+++-    #     existing_content = ""
++++    if os.path.exists(changelog_path):
++++        with open(changelog_path, "r") as f:
++++            existing_content = f.read()
++++    else:
++++        existing_content = ""
+++ 
+++     with open(changelog_path, "a") as f:
+++         f.write(new_content + "\n\n")
+++
+++
++#### app/backend/prepdocslib/searchmanager.py
++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
++index f75af03..314e4fd 100644
++--- a/app/backend/prepdocslib/searchmanager.py
+++++ b/app/backend/prepdocslib/searchmanager.py
++@@ -103,7 +103,11 @@ class SearchManager:
++                         vector_search_dimensions=self.embedding_dimensions,
++                         vector_search_profile_name="embedding_config",
++                     ),
++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
+++                    SimpleField(
+++                        name="category", 
+++                        type="Edm.String", 
+++                        filterable=True, 
+++                        facetable=True),
++                     SimpleField(
++                         name="sourcepage",
++                         type="Edm.String",
++@@ -122,22 +126,18 @@ class SearchManager:
++                         filterable=True,
++                         facetable=False,
++                     ),
++-                ]
++-                if self.use_acls:
++-                    fields.append(
++-                        SimpleField(
++-                            name="oids",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
++-                    )
++-                    fields.append(
++-                        SimpleField(
++-                            name="groups",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
+++                    SimpleField(
+++                        name="oids",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
+++                    ),
+++                    SimpleField(
+++                        name="groups",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
++                     )
+++                ]
+++                    
++                 if self.use_int_vectorization:
++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
++#### scripts/generate_git_commit_message.py
++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
++index 171fb03..13254af 100644
++--- a/scripts/generate_git_commit_message.py
+++++ b/scripts/generate_git_commit_message.py
++@@ -27,14 +27,14 @@ def get_file_diff(file_path):
++ 
++ def prepend_to_changelog(new_content):
++     changelog_path = "CHANGELOG.md"
++-    # if os.path.exists(changelog_path):
++-    #     with open(changelog_path, "r") as f:
++-    #         existing_content = f.read()
++-    # else:
++-    #     existing_content = ""
+++    if os.path.exists(changelog_path):
+++        with open(changelog_path, "r") as f:
+++            existing_content = f.read()
+++    else:
+++        existing_content = ""
++ 
++-    with open(changelog_path, "a") as f:
++-        f.write(new_content + "\n\n")
+++    with open(changelog_path, "w") as f:
+++        f.write(new_content + "\n\n" + existing_content)
++ 
++ def main():
++     repo_path = os.getcwd()
++
++
+ ---
+ Generated on: 2025-02-24 12:05:03
+ 
+@@ -2151,3 +2788,101 @@ index dd2d488..44a233f 100644
+ \ No newline at end of file
+ 
+ 
++---
++Generated on: 2025-02-24 13:41:14
++
++### Changes made:
++
++- .azure/pai-mm-prod/.env-temp
++- app/backend/prepdocslib/searchmanager.py
++- scripts/generate_git_commit_message.py
++
++### Detailed changes:
++
++#### .azure/pai-mm-prod/.env-temp
++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
++index adad91f..2983b9f 100644
++--- a/.azure/pai-mm-prod/.env-temp
+++++ b/.azure/pai-mm-prod/.env-temp
++@@ -1,5 +1,4 @@
++ AZURE_AUTH_TENANT_ID=""
++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
++ AZURE_COSMOSDB_LOCATION="centralus"
++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
++ AZURE_ENFORCE_ACCESS_CONTROL="true"
++#### app/backend/prepdocslib/searchmanager.py
++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
++index f75af03..314e4fd 100644
++--- a/app/backend/prepdocslib/searchmanager.py
+++++ b/app/backend/prepdocslib/searchmanager.py
++@@ -103,7 +103,11 @@ class SearchManager:
++                         vector_search_dimensions=self.embedding_dimensions,
++                         vector_search_profile_name="embedding_config",
++                     ),
++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
+++                    SimpleField(
+++                        name="category", 
+++                        type="Edm.String", 
+++                        filterable=True, 
+++                        facetable=True),
++                     SimpleField(
++                         name="sourcepage",
++                         type="Edm.String",
++@@ -122,22 +126,18 @@ class SearchManager:
++                         filterable=True,
++                         facetable=False,
++                     ),
++-                ]
++-                if self.use_acls:
++-                    fields.append(
++-                        SimpleField(
++-                            name="oids",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
++-                    )
++-                    fields.append(
++-                        SimpleField(
++-                            name="groups",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
+++                    SimpleField(
+++                        name="oids",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
+++                    ),
+++                    SimpleField(
+++                        name="groups",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
++                     )
+++                ]
+++                    
++                 if self.use_int_vectorization:
++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
++#### scripts/generate_git_commit_message.py
++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
++index 171fb03..00790e8 100644
++--- a/scripts/generate_git_commit_message.py
+++++ b/scripts/generate_git_commit_message.py
++@@ -27,11 +27,11 @@ def get_file_diff(file_path):
++ 
++ def prepend_to_changelog(new_content):
++     changelog_path = "CHANGELOG.md"
++-    # if os.path.exists(changelog_path):
++-    #     with open(changelog_path, "r") as f:
++-    #         existing_content = f.read()
++-    # else:
++-    #     existing_content = ""
+++    if os.path.exists(changelog_path):
+++        with open(changelog_path, "r") as f:
+++            existing_content = f.read()
+++    else:
+++        existing_content = ""
++ 
++     with open(changelog_path, "a") as f:
++         f.write(new_content + "\n\n")
++
++
+#### app/backend/prepdocslib/searchmanager.py
+diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
+index f75af03..314e4fd 100644
+--- a/app/backend/prepdocslib/searchmanager.py
++++ b/app/backend/prepdocslib/searchmanager.py
+@@ -103,7 +103,11 @@ class SearchManager:
+                         vector_search_dimensions=self.embedding_dimensions,
+                         vector_search_profile_name="embedding_config",
+                     ),
+-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
++                    SimpleField(
++                        name="category", 
++                        type="Edm.String", 
++                        filterable=True, 
++                        facetable=True),
+                     SimpleField(
+                         name="sourcepage",
+                         type="Edm.String",
+@@ -122,22 +126,18 @@ class SearchManager:
+                         filterable=True,
+                         facetable=False,
+                     ),
+-                ]
+-                if self.use_acls:
+-                    fields.append(
+-                        SimpleField(
+-                            name="oids",
+-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+-                            filterable=True,
+-                        )
+-                    )
+-                    fields.append(
+-                        SimpleField(
+-                            name="groups",
+-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+-                            filterable=True,
+-                        )
++                    SimpleField(
++                        name="oids",
++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++                        filterable=True,
++                    ),
++                    SimpleField(
++                        name="groups",
++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++                        filterable=True,
+                     )
++                ]
++                    
+                 if self.use_int_vectorization:
+                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
+                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
+#### scripts/generate_git_commit_message.py
+diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
+index 171fb03..13254af 100644
+--- a/scripts/generate_git_commit_message.py
++++ b/scripts/generate_git_commit_message.py
+@@ -27,14 +27,14 @@ def get_file_diff(file_path):
+ 
+ def prepend_to_changelog(new_content):
+     changelog_path = "CHANGELOG.md"
+-    # if os.path.exists(changelog_path):
+-    #     with open(changelog_path, "r") as f:
+-    #         existing_content = f.read()
+-    # else:
+-    #     existing_content = ""
++    if os.path.exists(changelog_path):
++        with open(changelog_path, "r") as f:
++            existing_content = f.read()
++    else:
++        existing_content = ""
+ 
+-    with open(changelog_path, "a") as f:
+-        f.write(new_content + "\n\n")
++    with open(changelog_path, "w") as f:
++        f.write(new_content + "\n\n" + existing_content)
+ 
+ def main():
+     repo_path = os.getcwd()
+
+
+---
+Generated on: 2025-02-24 13:46:12
+
+### Changes made:
+
+- .azure/pai-mm-prod/.env-temp
+- CHANGELOG.md
+- app/backend/prepdocslib/searchmanager.py
+- scripts/generate_git_commit_message.py
+
+### Detailed changes:
+
+#### .azure/pai-mm-prod/.env-temp
+diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
+index adad91f..2983b9f 100644
+--- a/.azure/pai-mm-prod/.env-temp
++++ b/.azure/pai-mm-prod/.env-temp
+@@ -1,5 +1,4 @@
+ AZURE_AUTH_TENANT_ID=""
+-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
+ AZURE_COSMOSDB_LOCATION="centralus"
+ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
+ AZURE_ENFORCE_ACCESS_CONTROL="true"
+#### CHANGELOG.md
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 4028629..0b174a3 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,3 +1,214 @@
++---
++Generated on: 2025-02-24 13:46:08
++
++### Changes made:
++
++- .azure/pai-mm-prod/.env-temp
++- CHANGELOG.md
++- app/backend/prepdocslib/searchmanager.py
++- scripts/generate_git_commit_message.py
++
++### Detailed changes:
++
++#### .azure/pai-mm-prod/.env-temp
++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
++index adad91f..2983b9f 100644
++--- a/.azure/pai-mm-prod/.env-temp
+++++ b/.azure/pai-mm-prod/.env-temp
++@@ -1,5 +1,4 @@
++ AZURE_AUTH_TENANT_ID=""
++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
++ AZURE_COSMOSDB_LOCATION="centralus"
++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
++ AZURE_ENFORCE_ACCESS_CONTROL="true"
++#### CHANGELOG.md
++diff --git a/CHANGELOG.md b/CHANGELOG.md
++index 4028629..e7e4c54 100644
++--- a/CHANGELOG.md
+++++ b/CHANGELOG.md
++@@ -2151,3 +2151,101 @@ index dd2d488..44a233f 100644
++ \ No newline at end of file
++ 
++ 
+++---
+++Generated on: 2025-02-24 13:41:14
+++
+++### Changes made:
+++
+++- .azure/pai-mm-prod/.env-temp
+++- app/backend/prepdocslib/searchmanager.py
+++- scripts/generate_git_commit_message.py
+++
+++### Detailed changes:
+++
+++#### .azure/pai-mm-prod/.env-temp
+++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
+++index adad91f..2983b9f 100644
+++--- a/.azure/pai-mm-prod/.env-temp
++++++ b/.azure/pai-mm-prod/.env-temp
+++@@ -1,5 +1,4 @@
+++ AZURE_AUTH_TENANT_ID=""
+++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
+++ AZURE_COSMOSDB_LOCATION="centralus"
+++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
+++ AZURE_ENFORCE_ACCESS_CONTROL="true"
+++#### app/backend/prepdocslib/searchmanager.py
+++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
+++index f75af03..314e4fd 100644
+++--- a/app/backend/prepdocslib/searchmanager.py
++++++ b/app/backend/prepdocslib/searchmanager.py
+++@@ -103,7 +103,11 @@ class SearchManager:
+++                         vector_search_dimensions=self.embedding_dimensions,
+++                         vector_search_profile_name="embedding_config",
+++                     ),
+++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
++++                    SimpleField(
++++                        name="category", 
++++                        type="Edm.String", 
++++                        filterable=True, 
++++                        facetable=True),
+++                     SimpleField(
+++                         name="sourcepage",
+++                         type="Edm.String",
+++@@ -122,22 +126,18 @@ class SearchManager:
+++                         filterable=True,
+++                         facetable=False,
+++                     ),
+++-                ]
+++-                if self.use_acls:
+++-                    fields.append(
+++-                        SimpleField(
+++-                            name="oids",
+++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++-                            filterable=True,
+++-                        )
+++-                    )
+++-                    fields.append(
+++-                        SimpleField(
+++-                            name="groups",
+++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++-                            filterable=True,
+++-                        )
++++                    SimpleField(
++++                        name="oids",
++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++                        filterable=True,
++++                    ),
++++                    SimpleField(
++++                        name="groups",
++++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++++                        filterable=True,
+++                     )
++++                ]
++++                    
+++                 if self.use_int_vectorization:
+++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
+++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
+++#### scripts/generate_git_commit_message.py
+++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
+++index 171fb03..00790e8 100644
+++--- a/scripts/generate_git_commit_message.py
++++++ b/scripts/generate_git_commit_message.py
+++@@ -27,11 +27,11 @@ def get_file_diff(file_path):
+++ 
+++ def prepend_to_changelog(new_content):
+++     changelog_path = "CHANGELOG.md"
+++-    # if os.path.exists(changelog_path):
+++-    #     with open(changelog_path, "r") as f:
+++-    #         existing_content = f.read()
+++-    # else:
+++-    #     existing_content = ""
++++    if os.path.exists(changelog_path):
++++        with open(changelog_path, "r") as f:
++++            existing_content = f.read()
++++    else:
++++        existing_content = ""
+++ 
+++     with open(changelog_path, "a") as f:
+++         f.write(new_content + "\n\n")
+++
+++
++#### app/backend/prepdocslib/searchmanager.py
++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
++index f75af03..314e4fd 100644
++--- a/app/backend/prepdocslib/searchmanager.py
+++++ b/app/backend/prepdocslib/searchmanager.py
++@@ -103,7 +103,11 @@ class SearchManager:
++                         vector_search_dimensions=self.embedding_dimensions,
++                         vector_search_profile_name="embedding_config",
++                     ),
++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
+++                    SimpleField(
+++                        name="category", 
+++                        type="Edm.String", 
+++                        filterable=True, 
+++                        facetable=True),
++                     SimpleField(
++                         name="sourcepage",
++                         type="Edm.String",
++@@ -122,22 +126,18 @@ class SearchManager:
++                         filterable=True,
++                         facetable=False,
++                     ),
++-                ]
++-                if self.use_acls:
++-                    fields.append(
++-                        SimpleField(
++-                            name="oids",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
++-                    )
++-                    fields.append(
++-                        SimpleField(
++-                            name="groups",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
+++                    SimpleField(
+++                        name="oids",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
+++                    ),
+++                    SimpleField(
+++                        name="groups",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
++                     )
+++                ]
+++                    
++                 if self.use_int_vectorization:
++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
++#### scripts/generate_git_commit_message.py
++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
++index 171fb03..13254af 100644
++--- a/scripts/generate_git_commit_message.py
+++++ b/scripts/generate_git_commit_message.py
++@@ -27,14 +27,14 @@ def get_file_diff(file_path):
++ 
++ def prepend_to_changelog(new_content):
++     changelog_path = "CHANGELOG.md"
++-    # if os.path.exists(changelog_path):
++-    #     with open(changelog_path, "r") as f:
++-    #         existing_content = f.read()
++-    # else:
++-    #     existing_content = ""
+++    if os.path.exists(changelog_path):
+++        with open(changelog_path, "r") as f:
+++            existing_content = f.read()
+++    else:
+++        existing_content = ""
++ 
++-    with open(changelog_path, "a") as f:
++-        f.write(new_content + "\n\n")
+++    with open(changelog_path, "w") as f:
+++        f.write(new_content + "\n\n" + existing_content)
++ 
++ def main():
++     repo_path = os.getcwd()
++
++
+ ---
+ Generated on: 2025-02-24 12:05:03
+ 
+@@ -2151,3 +2362,101 @@ index dd2d488..44a233f 100644
+ \ No newline at end of file
+ 
+ 
++---
++Generated on: 2025-02-24 13:41:14
++
++### Changes made:
++
++- .azure/pai-mm-prod/.env-temp
++- app/backend/prepdocslib/searchmanager.py
++- scripts/generate_git_commit_message.py
++
++### Detailed changes:
++
++#### .azure/pai-mm-prod/.env-temp
++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
++index adad91f..2983b9f 100644
++--- a/.azure/pai-mm-prod/.env-temp
+++++ b/.azure/pai-mm-prod/.env-temp
++@@ -1,5 +1,4 @@
++ AZURE_AUTH_TENANT_ID=""
++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
++ AZURE_COSMOSDB_LOCATION="centralus"
++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
++ AZURE_ENFORCE_ACCESS_CONTROL="true"
++#### app/backend/prepdocslib/searchmanager.py
++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
++index f75af03..314e4fd 100644
++--- a/app/backend/prepdocslib/searchmanager.py
+++++ b/app/backend/prepdocslib/searchmanager.py
++@@ -103,7 +103,11 @@ class SearchManager:
++                         vector_search_dimensions=self.embedding_dimensions,
++                         vector_search_profile_name="embedding_config",
++                     ),
++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
+++                    SimpleField(
+++                        name="category", 
+++                        type="Edm.String", 
+++                        filterable=True, 
+++                        facetable=True),
++                     SimpleField(
++                         name="sourcepage",
++                         type="Edm.String",
++@@ -122,22 +126,18 @@ class SearchManager:
++                         filterable=True,
++                         facetable=False,
++                     ),
++-                ]
++-                if self.use_acls:
++-                    fields.append(
++-                        SimpleField(
++-                            name="oids",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
++-                    )
++-                    fields.append(
++-                        SimpleField(
++-                            name="groups",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
+++                    SimpleField(
+++                        name="oids",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
+++                    ),
+++                    SimpleField(
+++                        name="groups",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
++                     )
+++                ]
+++                    
++                 if self.use_int_vectorization:
++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
++#### scripts/generate_git_commit_message.py
++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
++index 171fb03..00790e8 100644
++--- a/scripts/generate_git_commit_message.py
+++++ b/scripts/generate_git_commit_message.py
++@@ -27,11 +27,11 @@ def get_file_diff(file_path):
++ 
++ def prepend_to_changelog(new_content):
++     changelog_path = "CHANGELOG.md"
++-    # if os.path.exists(changelog_path):
++-    #     with open(changelog_path, "r") as f:
++-    #         existing_content = f.read()
++-    # else:
++-    #     existing_content = ""
+++    if os.path.exists(changelog_path):
+++        with open(changelog_path, "r") as f:
+++            existing_content = f.read()
+++    else:
+++        existing_content = ""
++ 
++     with open(changelog_path, "a") as f:
++         f.write(new_content + "\n\n")
++
++
+#### app/backend/prepdocslib/searchmanager.py
+diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
+index f75af03..314e4fd 100644
+--- a/app/backend/prepdocslib/searchmanager.py
++++ b/app/backend/prepdocslib/searchmanager.py
+@@ -103,7 +103,11 @@ class SearchManager:
+                         vector_search_dimensions=self.embedding_dimensions,
+                         vector_search_profile_name="embedding_config",
+                     ),
+-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
++                    SimpleField(
++                        name="category", 
++                        type="Edm.String", 
++                        filterable=True, 
++                        facetable=True),
+                     SimpleField(
+                         name="sourcepage",
+                         type="Edm.String",
+@@ -122,22 +126,18 @@ class SearchManager:
+                         filterable=True,
+                         facetable=False,
+                     ),
+-                ]
+-                if self.use_acls:
+-                    fields.append(
+-                        SimpleField(
+-                            name="oids",
+-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+-                            filterable=True,
+-                        )
+-                    )
+-                    fields.append(
+-                        SimpleField(
+-                            name="groups",
+-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+-                            filterable=True,
+-                        )
++                    SimpleField(
++                        name="oids",
++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++                        filterable=True,
++                    ),
++                    SimpleField(
++                        name="groups",
++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++                        filterable=True,
+                     )
++                ]
++                    
+                 if self.use_int_vectorization:
+                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
+                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
+#### scripts/generate_git_commit_message.py
+diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
+index 171fb03..13254af 100644
+--- a/scripts/generate_git_commit_message.py
++++ b/scripts/generate_git_commit_message.py
+@@ -27,14 +27,14 @@ def get_file_diff(file_path):
+ 
+ def prepend_to_changelog(new_content):
+     changelog_path = "CHANGELOG.md"
+-    # if os.path.exists(changelog_path):
+-    #     with open(changelog_path, "r") as f:
+-    #         existing_content = f.read()
+-    # else:
+-    #     existing_content = ""
++    if os.path.exists(changelog_path):
++        with open(changelog_path, "r") as f:
++            existing_content = f.read()
++    else:
++        existing_content = ""
+ 
+-    with open(changelog_path, "a") as f:
+-        f.write(new_content + "\n\n")
++    with open(changelog_path, "w") as f:
++        f.write(new_content + "\n\n" + existing_content)
+ 
+ def main():
+     repo_path = os.getcwd()
+
+
+---
+Generated on: 2025-02-24 13:46:08
+
+### Changes made:
+
+- .azure/pai-mm-prod/.env-temp
+- CHANGELOG.md
+- app/backend/prepdocslib/searchmanager.py
+- scripts/generate_git_commit_message.py
+
+### Detailed changes:
+
+#### .azure/pai-mm-prod/.env-temp
+diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
+index adad91f..2983b9f 100644
+--- a/.azure/pai-mm-prod/.env-temp
++++ b/.azure/pai-mm-prod/.env-temp
+@@ -1,5 +1,4 @@
+ AZURE_AUTH_TENANT_ID=""
+-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
+ AZURE_COSMOSDB_LOCATION="centralus"
+ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
+ AZURE_ENFORCE_ACCESS_CONTROL="true"
+#### CHANGELOG.md
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 4028629..e7e4c54 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -2151,3 +2151,101 @@ index dd2d488..44a233f 100644
+ \ No newline at end of file
+ 
+ 
++---
++Generated on: 2025-02-24 13:41:14
++
++### Changes made:
++
++- .azure/pai-mm-prod/.env-temp
++- app/backend/prepdocslib/searchmanager.py
++- scripts/generate_git_commit_message.py
++
++### Detailed changes:
++
++#### .azure/pai-mm-prod/.env-temp
++diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
++index adad91f..2983b9f 100644
++--- a/.azure/pai-mm-prod/.env-temp
+++++ b/.azure/pai-mm-prod/.env-temp
++@@ -1,5 +1,4 @@
++ AZURE_AUTH_TENANT_ID=""
++-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
++ AZURE_COSMOSDB_LOCATION="centralus"
++ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
++ AZURE_ENFORCE_ACCESS_CONTROL="true"
++#### app/backend/prepdocslib/searchmanager.py
++diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
++index f75af03..314e4fd 100644
++--- a/app/backend/prepdocslib/searchmanager.py
+++++ b/app/backend/prepdocslib/searchmanager.py
++@@ -103,7 +103,11 @@ class SearchManager:
++                         vector_search_dimensions=self.embedding_dimensions,
++                         vector_search_profile_name="embedding_config",
++                     ),
++-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
+++                    SimpleField(
+++                        name="category", 
+++                        type="Edm.String", 
+++                        filterable=True, 
+++                        facetable=True),
++                     SimpleField(
++                         name="sourcepage",
++                         type="Edm.String",
++@@ -122,22 +126,18 @@ class SearchManager:
++                         filterable=True,
++                         facetable=False,
++                     ),
++-                ]
++-                if self.use_acls:
++-                    fields.append(
++-                        SimpleField(
++-                            name="oids",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
++-                    )
++-                    fields.append(
++-                        SimpleField(
++-                            name="groups",
++-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++-                            filterable=True,
++-                        )
+++                    SimpleField(
+++                        name="oids",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
+++                    ),
+++                    SimpleField(
+++                        name="groups",
+++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+++                        filterable=True,
++                     )
+++                ]
+++                    
++                 if self.use_int_vectorization:
++                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
++                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
++#### scripts/generate_git_commit_message.py
++diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
++index 171fb03..00790e8 100644
++--- a/scripts/generate_git_commit_message.py
+++++ b/scripts/generate_git_commit_message.py
++@@ -27,11 +27,11 @@ def get_file_diff(file_path):
++ 
++ def prepend_to_changelog(new_content):
++     changelog_path = "CHANGELOG.md"
++-    # if os.path.exists(changelog_path):
++-    #     with open(changelog_path, "r") as f:
++-    #         existing_content = f.read()
++-    # else:
++-    #     existing_content = ""
+++    if os.path.exists(changelog_path):
+++        with open(changelog_path, "r") as f:
+++            existing_content = f.read()
+++    else:
+++        existing_content = ""
++ 
++     with open(changelog_path, "a") as f:
++         f.write(new_content + "\n\n")
++
++
+#### app/backend/prepdocslib/searchmanager.py
+diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
+index f75af03..314e4fd 100644
+--- a/app/backend/prepdocslib/searchmanager.py
++++ b/app/backend/prepdocslib/searchmanager.py
+@@ -103,7 +103,11 @@ class SearchManager:
+                         vector_search_dimensions=self.embedding_dimensions,
+                         vector_search_profile_name="embedding_config",
+                     ),
+-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
++                    SimpleField(
++                        name="category", 
++                        type="Edm.String", 
++                        filterable=True, 
++                        facetable=True),
+                     SimpleField(
+                         name="sourcepage",
+                         type="Edm.String",
+@@ -122,22 +126,18 @@ class SearchManager:
+                         filterable=True,
+                         facetable=False,
+                     ),
+-                ]
+-                if self.use_acls:
+-                    fields.append(
+-                        SimpleField(
+-                            name="oids",
+-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+-                            filterable=True,
+-                        )
+-                    )
+-                    fields.append(
+-                        SimpleField(
+-                            name="groups",
+-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+-                            filterable=True,
+-                        )
++                    SimpleField(
++                        name="oids",
++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++                        filterable=True,
++                    ),
++                    SimpleField(
++                        name="groups",
++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++                        filterable=True,
+                     )
++                ]
++                    
+                 if self.use_int_vectorization:
+                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
+                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
+#### scripts/generate_git_commit_message.py
+diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
+index 171fb03..13254af 100644
+--- a/scripts/generate_git_commit_message.py
++++ b/scripts/generate_git_commit_message.py
+@@ -27,14 +27,14 @@ def get_file_diff(file_path):
+ 
+ def prepend_to_changelog(new_content):
+     changelog_path = "CHANGELOG.md"
+-    # if os.path.exists(changelog_path):
+-    #     with open(changelog_path, "r") as f:
+-    #         existing_content = f.read()
+-    # else:
+-    #     existing_content = ""
++    if os.path.exists(changelog_path):
++        with open(changelog_path, "r") as f:
++            existing_content = f.read()
++    else:
++        existing_content = ""
+ 
+-    with open(changelog_path, "a") as f:
+-        f.write(new_content + "\n\n")
++    with open(changelog_path, "w") as f:
++        f.write(new_content + "\n\n" + existing_content)
+ 
+ def main():
+     repo_path = os.getcwd()
+
+
+---
 Generated on: 2025-02-24 12:05:03
 
 ### Changes made:
@@ -2149,5 +3638,103 @@ index dd2d488..44a233f 100644
 -}
 +}
 \ No newline at end of file
+
+
+---
+Generated on: 2025-02-24 13:41:14
+
+### Changes made:
+
+- .azure/pai-mm-prod/.env-temp
+- app/backend/prepdocslib/searchmanager.py
+- scripts/generate_git_commit_message.py
+
+### Detailed changes:
+
+#### .azure/pai-mm-prod/.env-temp
+diff --git a/.azure/pai-mm-prod/.env-temp b/.azure/pai-mm-prod/.env-temp
+index adad91f..2983b9f 100644
+--- a/.azure/pai-mm-prod/.env-temp
++++ b/.azure/pai-mm-prod/.env-temp
+@@ -1,5 +1,4 @@
+ AZURE_AUTH_TENANT_ID=""
+-AZURE_ADLS_GEN2_STORAGE_ACCOUNT=""
+ AZURE_COSMOSDB_LOCATION="centralus"
+ AZURE_ENABLE_GLOBAL_DOCUMENT_ACCESS="true"
+ AZURE_ENFORCE_ACCESS_CONTROL="true"
+#### app/backend/prepdocslib/searchmanager.py
+diff --git a/app/backend/prepdocslib/searchmanager.py b/app/backend/prepdocslib/searchmanager.py
+index f75af03..314e4fd 100644
+--- a/app/backend/prepdocslib/searchmanager.py
++++ b/app/backend/prepdocslib/searchmanager.py
+@@ -103,7 +103,11 @@ class SearchManager:
+                         vector_search_dimensions=self.embedding_dimensions,
+                         vector_search_profile_name="embedding_config",
+                     ),
+-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
++                    SimpleField(
++                        name="category", 
++                        type="Edm.String", 
++                        filterable=True, 
++                        facetable=True),
+                     SimpleField(
+                         name="sourcepage",
+                         type="Edm.String",
+@@ -122,22 +126,18 @@ class SearchManager:
+                         filterable=True,
+                         facetable=False,
+                     ),
+-                ]
+-                if self.use_acls:
+-                    fields.append(
+-                        SimpleField(
+-                            name="oids",
+-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+-                            filterable=True,
+-                        )
+-                    )
+-                    fields.append(
+-                        SimpleField(
+-                            name="groups",
+-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+-                            filterable=True,
+-                        )
++                    SimpleField(
++                        name="oids",
++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++                        filterable=True,
++                    ),
++                    SimpleField(
++                        name="groups",
++                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
++                        filterable=True,
+                     )
++                ]
++                    
+                 if self.use_int_vectorization:
+                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
+                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))
+#### scripts/generate_git_commit_message.py
+diff --git a/scripts/generate_git_commit_message.py b/scripts/generate_git_commit_message.py
+index 171fb03..00790e8 100644
+--- a/scripts/generate_git_commit_message.py
++++ b/scripts/generate_git_commit_message.py
+@@ -27,11 +27,11 @@ def get_file_diff(file_path):
+ 
+ def prepend_to_changelog(new_content):
+     changelog_path = "CHANGELOG.md"
+-    # if os.path.exists(changelog_path):
+-    #     with open(changelog_path, "r") as f:
+-    #         existing_content = f.read()
+-    # else:
+-    #     existing_content = ""
++    if os.path.exists(changelog_path):
++        with open(changelog_path, "r") as f:
++            existing_content = f.read()
++    else:
++        existing_content = ""
+ 
+     with open(changelog_path, "a") as f:
+         f.write(new_content + "\n\n")
 
 
