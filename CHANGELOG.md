@@ -1,4 +1,105 @@
 ---
+Generated on: 2025-02-25 10:51:05
+
+### Changes made:
+
+- app/frontend/src/components/Example/Example.module.css
+- app/frontend/src/components/Footer/Footer.module.css
+- app/frontend/src/pages/chat/Chat.module.css
+- app/frontend/src/pages/layout/Layout.module.css
+
+### Detailed changes:
+
+#### app/frontend/src/components/Example/Example.module.css
+diff --git a/app/frontend/src/components/Example/Example.module.css b/app/frontend/src/components/Example/Example.module.css
+index 0ab3f10..dab8aec 100644
+--- a/app/frontend/src/components/Example/Example.module.css
++++ b/app/frontend/src/components/Example/Example.module.css
+@@ -48,6 +48,8 @@
+         flex-direction: row; /* Switch to row layout for wider screens */
+         padding-left: 0;
+         padding-right: 0;
++        margin-left: 1rem;
++        margin-right: 1rem;
+     }
+ 
+     .example {
+@@ -60,9 +62,11 @@
+         display: block; /* Show an additional list item for medium heights */
+     }
+     .exampleText {
+-        font-size: 1.375rem;
+-        width: 17.5rem;
++        font-size: 1.1rem;
++        font-weight: 600;
++        width: 15.5rem;
+         padding: 0;
+-        min-height: 6.25rem;
++        color: rgb(75, 94, 196);
++        min-height: 2.25rem;
+     }
+ }
+#### app/frontend/src/components/Footer/Footer.module.css
+diff --git a/app/frontend/src/components/Footer/Footer.module.css b/app/frontend/src/components/Footer/Footer.module.css
+index 6eec09f..3107f3b 100644
+--- a/app/frontend/src/components/Footer/Footer.module.css
++++ b/app/frontend/src/components/Footer/Footer.module.css
+@@ -5,6 +5,8 @@
+     padding: 1rem;
+     background-color: #000000; /* Adjust the background color to match your header */
+     color: white; /* Set the text color to white */
++    font-size: smaller;
++    width: 100%;
+ }
+ 
+ .logo {
+#### app/frontend/src/pages/chat/Chat.module.css
+diff --git a/app/frontend/src/pages/chat/Chat.module.css b/app/frontend/src/pages/chat/Chat.module.css
+index 8ee0840..77a00ae 100644
+--- a/app/frontend/src/pages/chat/Chat.module.css
++++ b/app/frontend/src/pages/chat/Chat.module.css
+@@ -32,8 +32,9 @@
+ .chatEmptyStateTitle {
+     font-size: 1.75rem;
+     font-weight: 600;
+-    margin-top: 1;
++    margin-top: 0.5rem;
+     margin-bottom: 0rem;
++    color: rgb(75, 94, 196);
+ }
+ 
+ .chatEmptyStateSubtitle {
+@@ -122,11 +123,11 @@
+     }
+ 
+     .chatEmptyState {
+-        padding-top: 3.75rem;
++        padding-top: 0.75rem;
+     }
+ 
+     .chatEmptyStateTitle {
+-        font-size: 3rem;
++        font-size: 2.5rem;
+     }
+ 
+     .chatInput {
+#### app/frontend/src/pages/layout/Layout.module.css
+diff --git a/app/frontend/src/pages/layout/Layout.module.css b/app/frontend/src/pages/layout/Layout.module.css
+index f78c147..7a86702 100644
+--- a/app/frontend/src/pages/layout/Layout.module.css
++++ b/app/frontend/src/pages/layout/Layout.module.css
+@@ -1,7 +1,7 @@
+ .layout {
+     display: flex;
+     flex-direction: column;
+-    height: 100%;
++    min-height: 100vh;
+ }
+ 
+ .content {
+
+
+---
 Generated on: 2025-02-24 20:44:00
 
 ### Changes made:

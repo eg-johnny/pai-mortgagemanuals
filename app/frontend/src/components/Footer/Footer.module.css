@@ -5,6 +5,8 @@
     padding: 1rem;
     background-color: #000000; /* Adjust the background color to match your header */
     color: white; /* Set the text color to white */
+    font-size: smaller;
+    width: 100%;
 }
 
 .logo {
