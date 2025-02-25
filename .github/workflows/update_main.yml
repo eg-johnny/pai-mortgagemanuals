@@ -54,7 +54,7 @@ jobs:
           branch: update-upstream-main
           base: main
           commit-message: "Merging upstream changes (auto-handled merge conflicts)"
-          author: "GitHub Action"
+          author: "GitHub Action <noreply@github.com>"
           title: "Update main from upstream"
           body: "Merging changes from upstream/main. **Resolve conflicts in this PR before merging. Workflows are excluded from this merge.**"
           labels: "automated pr, needs review"
