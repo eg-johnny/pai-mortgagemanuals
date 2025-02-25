@@ -1,4 +1,171 @@
 ---
+Generated on: 2025-02-24 19:58:53
+
+### Changes made:
+
+- app/frontend/src/components/LoginButton/LoginButton.module.css
+- app/frontend/src/pages/chat/Chat.tsx
+- app/frontend/src/pages/layout/Layout.module.css
+- app/frontend/src/pages/layout/Layout.tsx
+- infra/main.bicep
+
+### Detailed changes:
+
+#### app/frontend/src/components/LoginButton/LoginButton.module.css
+diff --git a/app/frontend/src/components/LoginButton/LoginButton.module.css b/app/frontend/src/components/LoginButton/LoginButton.module.css
+index d2222b3..232f90c 100644
+--- a/app/frontend/src/components/LoginButton/LoginButton.module.css
++++ b/app/frontend/src/components/LoginButton/LoginButton.module.css
+@@ -1,7 +1,7 @@
+ .loginButton {
+     border-radius: 0.3125em;
+     font-weight: 100;
+-    font-size: 1rem;
++    font-size: 0.75rem;
+     margin: 0;
+     padding-left: 0.25rem;
+     padding-right: 0.25rem;
+#### app/frontend/src/pages/chat/Chat.tsx
+diff --git a/app/frontend/src/pages/chat/Chat.tsx b/app/frontend/src/pages/chat/Chat.tsx
+index ed46aa3..231e3e9 100644
+--- a/app/frontend/src/pages/chat/Chat.tsx
++++ b/app/frontend/src/pages/chat/Chat.tsx
+@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
+ import { Helmet } from "react-helmet-async";
+ import { Panel, DefaultButton } from "@fluentui/react";
+ import readNDJSONStream from "ndjson-readablestream";
+-
+-import appLogo from "../../assets/applogo.png";
+ import styles from "./Chat.module.css";
+ 
+ import {
+#### app/frontend/src/pages/layout/Layout.module.css
+diff --git a/app/frontend/src/pages/layout/Layout.module.css b/app/frontend/src/pages/layout/Layout.module.css
+index bd9ec18..6ce231e 100644
+--- a/app/frontend/src/pages/layout/Layout.module.css
++++ b/app/frontend/src/pages/layout/Layout.module.css
+@@ -4,8 +4,12 @@
+     height: 100%;
+ }
+ 
++.content {
++    flex: 1;
++}
++
+ .header {
+-    background-color: #222222;
++    background-color: #000000;
+     color: #f2f2f2;
+ }
+ 
+@@ -50,6 +54,12 @@
+     align-items: flex-end;
+ }
+ 
++@media (max-width: 991px) {
++    .headerNavList {
++        display: none;
++    }
++}
++
+ .headerNavList.show {
+     display: flex; /* Show when toggled */
+ }
+@@ -79,6 +89,11 @@
+     padding: 1rem;
+ }
+ 
++.externalLink {
++    color: #ffffff;
++    padding: 1rem;
++}
++
+ .headerNavLeftMargin {
+     display: none;
+ }
+#### app/frontend/src/pages/layout/Layout.tsx
+diff --git a/app/frontend/src/pages/layout/Layout.tsx b/app/frontend/src/pages/layout/Layout.tsx
+index 72ade3c..6fa3d30 100644
+--- a/app/frontend/src/pages/layout/Layout.tsx
++++ b/app/frontend/src/pages/layout/Layout.tsx
+@@ -6,6 +6,7 @@ import styles from "./Layout.module.css";
+ import { useLogin } from "../../authConfig";
+ 
+ import { LoginButton } from "../../components/LoginButton";
++import { Footer } from "../../components/Footer/Footer";
+ import { IconButton } from "@fluentui/react";
+ 
+ const Layout = () => {
+@@ -41,28 +42,24 @@ const Layout = () => {
+                     <Link to="/" className={styles.headerTitleContainer}>
+                         <h3 className={styles.headerTitle}>{t("headerTitle")}</h3>
+                     </Link>
+-                    {/* <nav>
++                    <nav>
+                         <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
+                             <li>
+-                                <NavLink
+-                                    to="/"
+-                                    className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
+-                                    onClick={() => setMenuOpen(false)}
++                                <a
++                                    style={{ color: "white" }}
++                                    target="_blank"
++                                    href="https://auth.sharefile.io/mortgagemanuals/login?returnUrl=%2fconnect%2fauthorize%2fcallback%3fclient_id%3dDzi4UPUAg5l8beKdioecdcnmHUTWWln6%26state%3dPnMKwy8LBandoWH9yApWcw--%26acr_values%3dtenant%253Amortgagemanuals%26response_type%3dcode%26redirect_uri%3dhttps%253A%252F%252Fmortgagemanuals.sharefile.com%252Flogin%252Foauthlogin%26scope%3dsharefile%253Arestapi%253Av3%2520sharefile%253Arestapi%253Av3-internal%2520offline_access%2520openid"
+                                 >
+-                                    {t("chat")}
+-                                </NavLink>
++                                    Policy Documents
++                                </a>
+                             </li>
+                             <li>
+-                                <NavLink
+-                                    to="/qa"
+-                                    className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
+-                                    onClick={() => setMenuOpen(false)}
+-                                >
+-                                    {t("qa")}
+-                                </NavLink>
++                                <a href="https://vm.providesupport.com/0vqlme5nawdpd03rg1k9jutxt2" target="_blank" className={styles.externalLink}>
++                                    Need Help?
++                                </a>
+                             </li>
+                         </ul>
+-                    </nav> */}
++                    </nav>
+                     <div className={styles.loginMenuContainer}>
+                         {useLogin && <LoginButton />}
+                         <IconButton
+@@ -74,8 +71,10 @@ const Layout = () => {
+                     </div>
+                 </div>
+             </header>
+-
+-            <Outlet />
++            <main className={styles.content}>
++                <Outlet />
++            </main>
++            <Footer />
+         </div>
+     );
+ };
+#### infra/main.bicep
+diff --git a/infra/main.bicep b/infra/main.bicep
+index a9cb352..f305f64 100644
+--- a/infra/main.bicep
++++ b/infra/main.bicep
+@@ -53,7 +53,7 @@ param azureOpenAiCustomUrl string = ''
+ param azureOpenAiApiVersion string = ''
+ @secure()
+ param azureOpenAiApiKey string = ''
+-param azureOpenAiDisableKeys bool = true
++param azureOpenAiDisableKeys bool = false
+ param openAiServiceName string = ''
+ param openAiResourceGroupName string = ''
+ 
+
+
+---
 Generated on: 2025-02-24 13:46:29
 
 ### Changes made:

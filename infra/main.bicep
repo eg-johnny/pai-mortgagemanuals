@@ -53,7 +53,7 @@ param azureOpenAiCustomUrl string = ''
 param azureOpenAiApiVersion string = ''
 @secure()
 param azureOpenAiApiKey string = ''
-param azureOpenAiDisableKeys bool = true
+param azureOpenAiDisableKeys bool = false
 param openAiServiceName string = ''
 param openAiResourceGroupName string = ''
 

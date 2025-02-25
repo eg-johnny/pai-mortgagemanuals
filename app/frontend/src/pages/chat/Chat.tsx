@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { Panel, DefaultButton } from "@fluentui/react";
 import readNDJSONStream from "ndjson-readablestream";
-
-import appLogo from "../../assets/applogo.png";
 import styles from "./Chat.module.css";
 
 import {
