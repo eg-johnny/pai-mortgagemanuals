@@ -1,4 +1,4 @@
-name: Update Main from Upstream
+name: Create Upstream Branch for PR
 
 on:
   workflow_dispatch:  # Manual trigger
