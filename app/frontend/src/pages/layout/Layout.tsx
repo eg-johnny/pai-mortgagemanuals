@@ -51,7 +51,7 @@ const Layout = () => {
                         <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
                             <li>
                                 <a
-                                    style={{ color: "white" }}
+                                    style={{ color: "white", background: "black" }}
                                     target="_blank"
                                     href="https://auth.sharefile.io/mortgagemanuals/login?returnUrl=%2fconnect%2fauthorize%2fcallback%3fclient_id%3dDzi4UPUAg5l8beKdioecdcnmHUTWWln6%26state%3dPnMKwy8LBandoWH9yApWcw--%26acr_values%3dtenant%253Amortgagemanuals%26response_type%3dcode%26redirect_uri%3dhttps%253A%252F%252Fmortgagemanuals.sharefile.com%252Flogin%252Foauthlogin%26scope%3dsharefile%253Arestapi%253Av3%2520sharefile%253Arestapi%253Av3-internal%2520offline_access%2520openid"
                                 >
@@ -59,7 +59,11 @@ const Layout = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://vm.providesupport.com/0vqlme5nawdpd03rg1k9jutxt2" target="_blank" className={styles.externalLink}>
+                                <a
+                                    href="https://vm.providesupport.com/0vqlme5nawdpd03rg1k9jutxt2"
+                                    target="_blank"
+                                    style={{ color: "white", background: "black" }}
+                                >
                                     Need Help?
                                 </a>
                             </li>

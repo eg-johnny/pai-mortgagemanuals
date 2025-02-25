@@ -1,4 +1,75 @@
 ---
+Generated on: 2025-02-24 20:44:00
+
+### Changes made:
+
+- app/frontend/src/pages/layout/Layout.module.css
+- app/frontend/src/pages/layout/Layout.tsx
+
+### Detailed changes:
+
+#### app/frontend/src/pages/layout/Layout.module.css
+diff --git a/app/frontend/src/pages/layout/Layout.module.css b/app/frontend/src/pages/layout/Layout.module.css
+index 6242bbf..d708e18 100644
+--- a/app/frontend/src/pages/layout/Layout.module.css
++++ b/app/frontend/src/pages/layout/Layout.module.css
+@@ -51,7 +51,8 @@
+ .headerNavList {
+     z-index: 100;
+     display: none;
+-    flex-direction: column;
++    flex-direction: row;
++    gap: 1rem;
+     background-color: #222222;
+     position: absolute;
+     top: 2.7rem;
+@@ -70,6 +71,7 @@
+ 
+ .headerNavList.show {
+     display: flex; /* Show when toggled */
++    flex-direction: column;
+ }
+ 
+ .headerNavPageLink {
+@@ -119,7 +121,7 @@
+ .loginMenuContainer {
+     display: flex;
+     align-items: center;
+-    gap: 0; /* Ensure no gap between login button and menu toggle */
++    gap: 0.25rem;
+ }
+ 
+ @media (min-width: 992px) {
+#### app/frontend/src/pages/layout/Layout.tsx
+diff --git a/app/frontend/src/pages/layout/Layout.tsx b/app/frontend/src/pages/layout/Layout.tsx
+index 9f1a648..bc4897d 100644
+--- a/app/frontend/src/pages/layout/Layout.tsx
++++ b/app/frontend/src/pages/layout/Layout.tsx
+@@ -51,7 +51,7 @@ const Layout = () => {
+                         <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
+                             <li>
+                                 <a
+-                                    style={{ color: "white" }}
++                                    style={{ color: "white", background: "black" }}
+                                     target="_blank"
+                                     href="https://auth.sharefile.io/mortgagemanuals/login?returnUrl=%2fconnect%2fauthorize%2fcallback%3fclient_id%3dDzi4UPUAg5l8beKdioecdcnmHUTWWln6%26state%3dPnMKwy8LBandoWH9yApWcw--%26acr_values%3dtenant%253Amortgagemanuals%26response_type%3dcode%26redirect_uri%3dhttps%253A%252F%252Fmortgagemanuals.sharefile.com%252Flogin%252Foauthlogin%26scope%3dsharefile%253Arestapi%253Av3%2520sharefile%253Arestapi%253Av3-internal%2520offline_access%2520openid"
+                                 >
+@@ -59,7 +59,11 @@ const Layout = () => {
+                                 </a>
+                             </li>
+                             <li>
+-                                <a href="https://vm.providesupport.com/0vqlme5nawdpd03rg1k9jutxt2" target="_blank" className={styles.externalLink}>
++                                <a
++                                    href="https://vm.providesupport.com/0vqlme5nawdpd03rg1k9jutxt2"
++                                    target="_blank"
++                                    style={{ color: "white", background: "black" }}
++                                >
+                                     Need Help?
+                                 </a>
+                             </li>
+
+
+---
 Generated on: 2025-02-24 19:58:53
 
 ### Changes made:
