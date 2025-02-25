@@ -39,9 +39,14 @@ const Layout = () => {
         <div className={styles.layout}>
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer} ref={menuRef}>
-                    <Link to="/" className={styles.headerTitleContainer}>
-                        <h3 className={styles.headerTitle}>{t("headerTitle")}</h3>
-                    </Link>
+                    <div className={styles.headerTitleContainer}>
+                        <a href="/">
+                            <img src="https://stjeegpqns5eeds.blob.core.windows.net/assets/pai-logo.png" className={styles.headerLogo} />
+                        </a>
+                        {/* <Link to="/" className={styles.headerTitleContainer}>
+                            <h3 className={styles.headerTitle}>{t("headerTitle")}</h3>
+                        </Link> */}
+                    </div>
                     <nav>
                         <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
                             <li>

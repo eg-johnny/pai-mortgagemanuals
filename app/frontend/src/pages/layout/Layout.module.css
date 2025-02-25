@@ -27,10 +27,18 @@
     align-items: center;
     color: #f2f2f2;
     text-decoration: none;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.headerLogoContainer {
+    display: flex;
+    align-items: left;
+    flex-direction: row;
 }
 
 .headerLogo {
-    height: 2rem;
+    height: 5rem;
     width: auto;
 }
 
