@@ -6,6 +6,7 @@ import styles from "./Layout.module.css";
 import { useLogin } from "../../authConfig";
 
 import { LoginButton } from "../../components/LoginButton";
+import { Footer } from "../../components/Footer/Footer";
 import { IconButton } from "@fluentui/react";
 
 const Layout = () => {
@@ -38,32 +39,36 @@ const Layout = () => {
         <div className={styles.layout}>
             <header className={styles.header} role={"banner"}>
                 <div className={styles.headerContainer} ref={menuRef}>
-                    <Link to="/" className={styles.headerTitleContainer}>
-                        <h3 className={styles.headerTitle}>{t("headerTitle")}</h3>
-                    </Link>
-                    {/* Removes navigation at the top banner */}
-                    {/* <nav>
+                    <div className={styles.headerTitleContainer}>
+                        <a href="/">
+                            <img src="https://stjeegpqns5eeds.blob.core.windows.net/assets/pai-logo.png" className={styles.headerLogo} />
+                        </a>
+                        {/* <Link to="/" className={styles.headerTitleContainer}>
+                            <h3 className={styles.headerTitle}>{t("headerTitle")}</h3>
+                        </Link> */}
+                    </div>
+                    <nav>
                         <ul className={`${styles.headerNavList} ${menuOpen ? styles.show : ""}`}>
                             <li>
-                                <NavLink
-                                    to="/"
-                                    className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
-                                    onClick={() => setMenuOpen(false)}
+                                <a
+                                    style={{ color: "white", background: "black" }}
+                                    target="_blank"
+                                    href="https://auth.sharefile.io/mortgagemanuals/login?returnUrl=%2fconnect%2fauthorize%2fcallback%3fclient_id%3dDzi4UPUAg5l8beKdioecdcnmHUTWWln6%26state%3dPnMKwy8LBandoWH9yApWcw--%26acr_values%3dtenant%253Amortgagemanuals%26response_type%3dcode%26redirect_uri%3dhttps%253A%252F%252Fmortgagemanuals.sharefile.com%252Flogin%252Foauthlogin%26scope%3dsharefile%253Arestapi%253Av3%2520sharefile%253Arestapi%253Av3-internal%2520offline_access%2520openid"
                                 >
-                                    {t("chat")}
-                                </NavLink>
+                                    Policy Documents
+                                </a>
                             </li>
                             <li>
-                                <NavLink
-                                    to="/qa"
-                                    className={({ isActive }) => (isActive ? styles.headerNavPageLinkActive : styles.headerNavPageLink)}
-                                    onClick={() => setMenuOpen(false)}
+                                <a
+                                    href="https://vm.providesupport.com/0vqlme5nawdpd03rg1k9jutxt2"
+                                    target="_blank"
+                                    style={{ color: "white", background: "black" }}
                                 >
-                                    {t("qa")}
-                                </NavLink>
+                                    Need Help?
+                                </a>
                             </li>
                         </ul>
-                    </nav> */}
+                    </nav>
                     <div className={styles.loginMenuContainer}>
                         {useLogin && <LoginButton />}
                         <IconButton
@@ -75,8 +80,10 @@ const Layout = () => {
                     </div>
                 </div>
             </header>
-
-            <Outlet />
+            <main className={styles.content}>
+                <Outlet />
+            </main>
+            <Footer />
         </div>
     );
 };

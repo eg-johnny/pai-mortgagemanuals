@@ -4,8 +4,12 @@
     height: 100%;
 }
 
+.content {
+    flex: 1;
+}
+
 .header {
-    background-color: #222222;
+    background-color: #000000;
     color: #f2f2f2;
 }
 
@@ -23,23 +27,33 @@
     align-items: center;
     color: #f2f2f2;
     text-decoration: none;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+.headerLogoContainer {
+    display: flex;
+    align-items: left;
+    flex-direction: row;
 }
 
 .headerLogo {
-    height: 2rem;
+    height: 5rem;
     width: auto;
 }
 
 .headerTitle {
     margin-left: 0.5rem;
     font-weight: 600;
+    text-align: center;
 }
 
 .headerNavList {
     z-index: 100;
     display: none;
-    flex-direction: column;
-    background-color: #222222;
+    flex-direction: row;
+    gap: 1rem;
+    background-color: #000000;
     position: absolute;
     top: 2.7rem;
     right: 0;
@@ -49,8 +63,15 @@
     align-items: flex-end;
 }
 
+@media (max-width: 991px) {
+    .headerNavList {
+        display: none;
+    }
+}
+
 .headerNavList.show {
     display: flex; /* Show when toggled */
+    flex-direction: column;
 }
 
 .headerNavPageLink {
@@ -78,6 +99,11 @@
     padding: 1rem;
 }
 
+.externalLink {
+    color: #ffffff;
+    padding: 1rem;
+}
+
 .headerNavLeftMargin {
     display: none;
 }
@@ -95,7 +121,7 @@
 .loginMenuContainer {
     display: flex;
     align-items: center;
-    gap: 0; /* Ensure no gap between login button and menu toggle */
+    gap: 0.25rem;
 }
 
 @media (min-width: 992px) {

@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #000000; /* Adjust the background color to match your header */
+    color: white; /* Set the text color to white */
+}
+
+.logo {
+    height: 4rem;
+}
+
+.footer .links {
+    display: flex;
+    gap: 1rem; /* Space between links */
+}
+
+.footer .right-link {
+    margin-left: auto;
+}
+
+.stackedLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Space between stacked links */
+    text-align: right;
+}
+@media (max-width: 991px) {
+    .footer {
+        display: none;
+    }
+}
