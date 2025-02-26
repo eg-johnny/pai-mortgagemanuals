@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 import { Helmet } from "react-helmet-async";
 import { Panel, DefaultButton } from "@fluentui/react";
 import readNDJSONStream from "ndjson-readablestream";
-
-import appLogo from "../../assets/applogo.svg";
 import styles from "./Chat.module.css";
 
 import {
@@ -52,7 +50,7 @@ const Chat = () => {
     const [useSemanticCaptions, setUseSemanticCaptions] = useState<boolean>(false);
     const [includeCategory, setIncludeCategory] = useState<string>("");
     const [excludeCategory, setExcludeCategory] = useState<string>("");
-    const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(false);
+    const [useSuggestFollowupQuestions, setUseSuggestFollowupQuestions] = useState<boolean>(true);
     const [vectorFieldList, setVectorFieldList] = useState<VectorFieldOptions[]>([VectorFieldOptions.Embedding]);
     const [useOidSecurityFilter, setUseOidSecurityFilter] = useState<boolean>(false);
     const [useGroupsSecurityFilter, setUseGroupsSecurityFilter] = useState<boolean>(false);
@@ -383,7 +381,7 @@ const Chat = () => {
                 <div className={styles.chatContainer}>
                     {!lastQuestionRef.current ? (
                         <div className={styles.chatEmptyState}>
-                            <img src={appLogo} alt="App logo" width="120" height="120" />
+                            <img className={styles.appLogo} src="https://stjeegpqns5eeds.blob.core.windows.net/assets/eg-main-logo.webp" alt="App logo" />
 
                             <h1 className={styles.chatEmptyStateTitle}>{t("chatEmptyStateTitle")}</h1>
                             <h2 className={styles.chatEmptyStateSubtitle}>{t("chatEmptyStateSubtitle")}</h2>
@@ -494,7 +492,7 @@ const Chat = () => {
                         }}
                     />
                 )}
-
+                {/* 
                 <Panel
                     headerText={t("labels.headerText")}
                     isOpen={isConfigPanelOpen}
@@ -533,7 +531,7 @@ const Chat = () => {
                         onChange={handleSettingsChange}
                     />
                     {useLogin && <TokenClaimsDisplay />}
-                </Panel>
+                </Panel> */}
             </div>
         </div>
     );

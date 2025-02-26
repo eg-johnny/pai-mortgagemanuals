@@ -103,7 +103,11 @@ class SearchManager:
                         vector_search_dimensions=self.embedding_dimensions,
                         vector_search_profile_name="embedding_config",
                     ),
-                    SimpleField(name="category", type="Edm.String", filterable=True, facetable=True),
+                    SimpleField(
+                        name="category", 
+                        type="Edm.String", 
+                        filterable=True, 
+                        facetable=True),
                     SimpleField(
                         name="sourcepage",
                         type="Edm.String",
@@ -122,22 +126,18 @@ class SearchManager:
                         filterable=True,
                         facetable=False,
                     ),
+                    SimpleField(
+                        name="oids",
+                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+                        filterable=True,
+                    ),
+                    SimpleField(
+                        name="groups",
+                        type=SearchFieldDataType.Collection(SearchFieldDataType.String),
+                        filterable=True,
+                    )
                 ]
-                if self.use_acls:
-                    fields.append(
-                        SimpleField(
-                            name="oids",
-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
-                            filterable=True,
-                        )
-                    )
-                    fields.append(
-                        SimpleField(
-                            name="groups",
-                            type=SearchFieldDataType.Collection(SearchFieldDataType.String),
-                            filterable=True,
-                        )
-                    )
+                    
                 if self.use_int_vectorization:
                     logger.info("Including parent_id field in new index %s", self.search_info.index_name)
                     fields.append(SearchableField(name="parent_id", type="Edm.String", filterable=True))

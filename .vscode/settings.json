@@ -30,5 +30,22 @@
         "tests"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "prompty.modelConfigurations": [
+        {
+            "name": "default",
+            "type": "azure_openai",
+            "api_version": "2024-08-01-preview",
+            "azure_endpoint": "https://entelligage-azure-openai.openai.azure.com/",
+            "azure_deployment": "eg-gpt-4o",
+            "api_key": ""
+        },
+        {
+            "name": "gpt-3.5-turbo",
+            "type": "openai",
+            "api_key": "${env:OPENAI_API_KEY}",
+            "organization": "${env:OPENAI_ORG_ID}",
+            "base_url": "${env:OPENAI_BASE_URL}"
+        }
+    ]
 }
