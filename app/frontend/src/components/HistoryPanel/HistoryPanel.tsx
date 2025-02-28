@@ -64,6 +64,12 @@ export const HistoryPanel = ({
         setHistory(prevHistory => prevHistory.filter(item => item.id !== id));
     };
 
+    const handleUpdateTitle = async (id: string, title: string) => {
+        const token = client ? await getToken(client) : undefined;
+        await historyManager.updateTitle(id, title, token);
+        setHistory(prevHistory => prevHistory.map(item => (item.id === id ? { ...item, title } : item)));
+    };
+
     const groupedHistory = useMemo(() => groupHistory(history), [history]);
 
     const { t } = useTranslation();
@@ -88,7 +94,7 @@ export const HistoryPanel = ({
                     <div key={group} className={styles.group}>
                         <p className={styles.groupLabel}>{t(group)}</p>
                         {items.map(item => (
-                            <HistoryItem key={item.id} item={item} onSelect={handleSelect} onDelete={handleDelete} />
+                            <HistoryItem key={item.id} item={item} onSelect={handleSelect} onDelete={handleDelete} onUpdateTitle={handleUpdateTitle} />
                         ))}
                     </div>
                 ))}

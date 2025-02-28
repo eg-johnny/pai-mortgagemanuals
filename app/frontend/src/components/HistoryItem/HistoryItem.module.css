@@ -11,6 +11,11 @@
     background-color: #f3f4f6;
 }
 
+.historyItem:hover .historyItemTitle {
+    text-decoration: underline;
+    color: blue;
+}
+
 .historyItemButton {
     flex-grow: 1;
     text-align: left;
@@ -25,7 +30,7 @@
     font-size: 1rem;
 }
 
-.deleteIcon {
+.editIcon .deleteIcon {
     width: 20px;
     height: 20px;
 }
@@ -41,12 +46,29 @@
     color: #6b7280;
 }
 
+.editButton {
+    opacity: 0;
+    transition: opacity 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 9999px;
+    color: #6b7280;
+}
+
 .historyItem:hover .deleteButton,
 .deleteButton:focus {
     opacity: 1;
 }
 
-.deleteButton:hover {
+.historyItem:hover .editButton,
+.editButton:focus {
+    opacity: 1;
+}
+
+.deleteButton:hover,
+.editButton:hover {
     color: #111827;
 }
 
@@ -92,6 +114,7 @@
     gap: 16px;
 }
 
+.modalSubmitButton,
 .modalCancelButton,
 .modalConfirmButton {
     padding: 8px 16px;
@@ -111,10 +134,27 @@
     color: white;
 }
 
+.modalSubmitButton {
+    background-color: blue;
+    color: white;
+}
+
 .modalCancelButton:hover {
     background-color: #e5e7eb;
 }
 
 .modalConfirmButton:hover {
     background-color: #dc2626;
+}
+
+.modalSubmitButton:hover {
+    background-color: blue;
+}
+
+.modalInput {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    margin-bottom: 16px;
 }

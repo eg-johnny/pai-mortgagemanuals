@@ -7,6 +7,7 @@
     color: white; /* Set the text color to white */
     font-size: smaller;
     width: 100%;
+    margin: 0;
 }
 
 .logo {
@@ -15,21 +16,55 @@
 
 .footer .links {
     display: flex;
+    text-align: center;
     gap: 1rem; /* Space between links */
 }
 
-.footer .right-link {
+.footer .rightLink {
     margin-left: auto;
+    text-align: center;
+    color: white;
+}
+
+.smallRightLink {
+    display: none;
 }
 
 .stackedLinks {
     display: flex;
     flex-direction: column;
     gap: 0.5rem; /* Space between stacked links */
-    text-align: right;
+    text-align: center;
+}
+.copyRight {
+    margin-top: -1.5rem;
+}
+.smallCopyRight {
+    margin-top: -1.5rem;
+    display: none;
 }
 @media (max-width: 991px) {
+    .egLogo {
+        display: none;
+    }
     .footer {
+        justify-content: space-evenly;
+    }
+    .copyRight {
+        margin-top: 0rem;
+        display: none;
+    }
+    .smallCopyRight {
+        margin-top: 0rem;
+        display: block;
+    }
+    .footer .smallRightLink {
+        margin-left: auto;
+        text-align: center;
+        color: white;
+        display: flex;
+    }
+    .rightLink {
         display: none;
     }
 }

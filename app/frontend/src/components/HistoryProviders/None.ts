@@ -17,4 +17,7 @@ export class NoneProvider implements IHistoryProvider {
     async deleteItem(id: string): Promise<void> {
         return;
     }
+    async updateTitle(id: string, title: string): Promise<void> {
+        return;
+    }
 }

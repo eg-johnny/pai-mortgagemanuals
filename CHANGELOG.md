@@ -1,4 +1,696 @@
 ---
+Generated on: 2025-02-27 20:23:04
+
+### Changes made:
+
+- app/backend/approaches/prompts/chat_answer_question.prompty
+- app/backend/chat_history/cosmosdb.py
+- app/frontend/src/api/api.ts
+- app/frontend/src/components/Example/Example.module.css
+- app/frontend/src/components/Footer/Footer.module.css
+- app/frontend/src/components/Footer/Footer.tsx
+- app/frontend/src/components/HistoryItem/HistoryItem.module.css
+- app/frontend/src/components/HistoryItem/HistoryItem.tsx
+- app/frontend/src/components/HistoryPanel/HistoryPanel.tsx
+- app/frontend/src/components/HistoryProviders/CosmosDB.ts
+- app/frontend/src/components/HistoryProviders/IProvider.ts
+- app/frontend/src/components/HistoryProviders/IndexedDB.ts
+- app/frontend/src/components/HistoryProviders/None.ts
+- app/frontend/src/locales/en/translation.json
+- app/frontend/src/pages/chat/Chat.module.css
+- app/frontend/src/pages/layout/Layout.module.css
+- infra/main.bicep
+
+### Detailed changes:
+
+#### app/backend/approaches/prompts/chat_answer_question.prompty
+diff --git a/app/backend/approaches/prompts/chat_answer_question.prompty b/app/backend/approaches/prompts/chat_answer_question.prompty
+index 434701a..a3129c8 100644
+--- a/app/backend/approaches/prompts/chat_answer_question.prompty
++++ b/app/backend/approaches/prompts/chat_answer_question.prompty
+@@ -38,7 +38,8 @@ You are a highly intelligent and resourceful assistant designed to serve as a co
+ 5. **Direct Quotes**: If a clear and concise direct quote exists, start with it. If multiple policies apply or a quote is unclear, begin with a summary, followed by supporting quotes.
+ 7. **Summarization**: Summarize the response in a user-friendly way. When applicable, follow with supporting excerpts.
+ 8. **Clarity**: Ensure the response is clear, concise, and actionable, guiding the employee to understand and implement the provided guidance.
+-9. **Acknowledgment of Gaps**: If no answer can be determined with the context, state this transparently.
++9. **Limit to Context**: Provide responses based solely on the information from the text sources provided.
++10. **Acknowledgment of Gaps**: If no answer can be determined with the context, state this transparently.
+ 
+ ### Process
+ 
+#### app/backend/chat_history/cosmosdb.py
+diff --git a/app/backend/chat_history/cosmosdb.py b/app/backend/chat_history/cosmosdb.py
+index fca1585..e52bb60 100644
+--- a/app/backend/chat_history/cosmosdb.py
++++ b/app/backend/chat_history/cosmosdb.py
+@@ -50,6 +50,7 @@ async def post_chat_history(auth_claims: Dict[str, Any]):
+             "type": "session",
+             "title": title,
+             "timestamp": timestamp,
++            "isDeleted": 0,
+         }
+ 
+         message_pair_items = []
+@@ -64,7 +65,7 @@ async def post_chat_history(auth_claims: Dict[str, Any]):
+                     "type": "message_pair",
+                     "question": message_pair[0],
+                     "response": message_pair[1],
+-                }
++                    "isDeleted": 0,                }
+             )
+ 
+         batch_operations = [("upsert", (session_item,))] + [
+@@ -95,7 +96,7 @@ async def get_chat_history_sessions(auth_claims: Dict[str, Any]):
+         continuation_token = request.args.get("continuation_token")
+ 
+         res = container.query_items(
+-            query="SELECT c.id, c.entra_oid, c.title, c.timestamp FROM c WHERE c.entra_oid = @entra_oid AND c.type = @type ORDER BY c.timestamp DESC",
++            query="SELECT c.id, c.entra_oid, c.title, c.timestamp FROM c WHERE c.isDeleted = 0 AND c.entra_oid = @entra_oid AND c.type = @type ORDER BY c.timestamp DESC",
+             parameters=[dict(name="@entra_oid", value=entra_oid), dict(name="@type", value="session")],
+             partition_key=[entra_oid],
+             max_item_count=count,
+@@ -145,7 +146,7 @@ async def get_chat_history_session(auth_claims: Dict[str, Any], session_id: str)
+ 
+     try:
+         res = container.query_items(
+-            query="SELECT * FROM c WHERE c.session_id = @session_id AND c.type = @type",
++            query="SELECT * FROM c WHERE c.isDeleted = 0 AND c.session_id = @session_id AND c.type = @type",
+             parameters=[dict(name="@session_id", value=session_id), dict(name="@type", value="message_pair")],
+             partition_key=[entra_oid, session_id],
+         )
+@@ -189,19 +190,60 @@ async def delete_chat_history_session(auth_claims: Dict[str, Any], session_id: s
+             parameters=[dict(name="@session_id", value=session_id)],
+             partition_key=[entra_oid, session_id],
+         )
+-
+-        ids_to_delete = []
++        
+         async for page in res.by_page():
+             async for item in page:
+-                ids_to_delete.append(item["id"])
+-
+-        batch_operations = [("delete", (id,)) for id in ids_to_delete]
+-        await container.execute_item_batch(batch_operations=batch_operations, partition_key=[entra_oid, session_id])
++                item_id = item["id"]
++                operations =[{ 'op': 'replace', 'path': '/isDeleted', 'value': 1 }]
++                await container.patch_item(item=item_id, partition_key=[entra_oid, session_id], patch_operations=operations)        
+         return await make_response("", 204)
+     except Exception as error:
+         return error_response(error, f"/chat_history/sessions/{session_id}")
+ 
+ 
++@chat_history_cosmosdb_bp.put("/chat_history/sessions/<session_id>/title")
++@authenticated
++async def update_chat_history_session_title(auth_claims: Dict[str, Any], session_id: str):
++    if not current_app.config[CONFIG_CHAT_HISTORY_COSMOS_ENABLED]:
++        return jsonify({"error": "Chat history not enabled"}), 400
++
++    container: ContainerProxy = current_app.config[CONFIG_COSMOS_HISTORY_CONTAINER]
++    if not container:
++        return jsonify({"error": "Chat history not enabled"}), 400
++
++    entra_oid = auth_claims.get("oid")
++    if not entra_oid:
++        return jsonify({"error": "User OID not found"}), 401
++
++    try:
++        request_json = await request.get_json()
++        new_title = request_json.get("title")
++        if not new_title:
++            return jsonify({"error": "Title is required"}), 400
++
++        res = container.query_items(
++            query="SELECT * FROM c WHERE c.session_id = @session_id AND c.type = @type",
++            parameters=[dict(name="@session_id", value=session_id), dict(name="@type", value="session")],
++            partition_key=[entra_oid, session_id],
++        )
++
++        session_item = None
++        async for page in res.by_page():
++            async for item in page:
++                session_item = item
++                break
++
++        if not session_item:
++            return jsonify({"error": "Session not found"}), 404
++
++        session_item["title"] = new_title
++        await container.upsert_item(session_item)
++
++        return jsonify({"message": "Title updated successfully"}), 200
++    except Exception as error:
++        return error_response(error, f"/chat_history/sessions/{session_id}/title")
++
++
+ @chat_history_cosmosdb_bp.before_app_serving
+ async def setup_clients():
+     USE_CHAT_HISTORY_COSMOS = os.getenv("USE_CHAT_HISTORY_COSMOS", "").lower() == "true"
+#### app/frontend/src/api/api.ts
+diff --git a/app/frontend/src/api/api.ts b/app/frontend/src/api/api.ts
+index df95f80..8e1c91f 100644
+--- a/app/frontend/src/api/api.ts
++++ b/app/frontend/src/api/api.ts
+@@ -189,3 +189,19 @@ export async function deleteChatHistoryApi(id: string, idToken: string): Promise
+         throw new Error(`Deleting chat history failed: ${response.statusText}`);
+     }
+ }
++
++export async function updateChatHistoryTitleApi(id: string, title: string, idToken: string): Promise<any> {
++    const headers = await getHeaders(idToken);
++    const response = await fetch(`/chat_history/sessions/${id}/title`, {
++        method: "PUT",
++        headers: { ...headers, "Content-Type": "application/json" },
++        body: JSON.stringify({ title })
++    });
++
++    if (!response.ok) {
++        throw new Error(`Updating chat history title failed: ${response.statusText}`);
++    }
++
++    const dataResponse: any = await response.json();
++    return dataResponse;
++}
+#### app/frontend/src/components/Example/Example.module.css
+diff --git a/app/frontend/src/components/Example/Example.module.css b/app/frontend/src/components/Example/Example.module.css
+index dab8aec..d383fae 100644
+--- a/app/frontend/src/components/Example/Example.module.css
++++ b/app/frontend/src/components/Example/Example.module.css
+@@ -28,10 +28,10 @@
+ 
+ .exampleText {
+     margin: 0;
+-    font-size: 1.25rem;
++    font-size: 1.3rem;
+     width: 25rem;
+     padding: 1rem;
+-    min-height: 4.5rem;
++    min-height: 85px;
+ }
+ 
+ .examplesNavList li {
+@@ -54,7 +54,8 @@
+ 
+     .example {
+         margin-bottom: 0.3125rem;
+-        padding: 1.25rem;
++        padding: 0.75rem;
++        min-height: 85px;
+     }
+ 
+     .examplesNavList li:nth-of-type(2),
+@@ -63,10 +64,7 @@
+     }
+     .exampleText {
+         font-size: 1.1rem;
+-        font-weight: 600;
+         width: 15.5rem;
+         padding: 0;
+-        color: rgb(75, 94, 196);
+-        min-height: 2.25rem;
+     }
+ }
+#### app/frontend/src/components/Footer/Footer.module.css
+diff --git a/app/frontend/src/components/Footer/Footer.module.css b/app/frontend/src/components/Footer/Footer.module.css
+index 3107f3b..172e833 100644
+--- a/app/frontend/src/components/Footer/Footer.module.css
++++ b/app/frontend/src/components/Footer/Footer.module.css
+@@ -7,6 +7,7 @@
+     color: white; /* Set the text color to white */
+     font-size: smaller;
+     width: 100%;
++    margin: 0;
+ }
+ 
+ .logo {
+@@ -15,21 +16,55 @@
+ 
+ .footer .links {
+     display: flex;
++    text-align: center;
+     gap: 1rem; /* Space between links */
+ }
+ 
+-.footer .right-link {
++.footer .rightLink {
+     margin-left: auto;
++    text-align: center;
++    color: white;
++}
++
++.smallRightLink {
++    display: none;
+ }
+ 
+ .stackedLinks {
+     display: flex;
+     flex-direction: column;
+     gap: 0.5rem; /* Space between stacked links */
+-    text-align: right;
++    text-align: center;
++}
++.copyRight {
++    margin-top: -1.5rem;
++}
++.smallCopyRight {
++    margin-top: -1.5rem;
++    display: none;
+ }
+ @media (max-width: 991px) {
++    .egLogo {
++        display: none;
++    }
+     .footer {
++        justify-content: space-evenly;
++    }
++    .copyRight {
++        margin-top: 0rem;
++        display: none;
++    }
++    .smallCopyRight {
++        margin-top: 0rem;
++        display: block;
++    }
++    .footer .smallRightLink {
++        margin-left: auto;
++        text-align: center;
++        color: white;
++        display: flex;
++    }
++    .rightLink {
+         display: none;
+     }
+ }
+#### app/frontend/src/components/Footer/Footer.tsx
+diff --git a/app/frontend/src/components/Footer/Footer.tsx b/app/frontend/src/components/Footer/Footer.tsx
+index 3fc6e07..216d0a2 100644
+--- a/app/frontend/src/components/Footer/Footer.tsx
++++ b/app/frontend/src/components/Footer/Footer.tsx
+@@ -5,9 +5,16 @@ export const Footer = () => {
+     const year = new Date().getFullYear();
+     return (
+         <footer className={styles.footer}>
+-            <a href="https://entelligage.com/" target="_blank">
+-                <img src="https://stjeegpqns5eeds.blob.core.windows.net/assets/EntelligageAI-Banner.png" alt="Logo" className={styles.logo} />
+-            </a>
++            <div className={styles.stackedLinks}>
++                <a href="https://entelligage.com/" target="_blank" className={styles.egLogo}>
++                    <img src="https://stjeegpqns5eeds.blob.core.windows.net/assets/EntelligageAI-Banner.png" alt="Logo" className={styles.logo} />
++                </a>
++                <div className={styles.smallCopyRight}>
++                    &copy; {year} Entelligage Inc. <br />
++                    All Rights Reserved
++                </div>
++                <div className={styles.copyRight}>&copy; {year} Entelligage Inc. All Rights Reserved</div>
++            </div>
+             <div className={styles.links}>
+                 <a href="https://entelligage.com/privacy-policy" target="_blank" style={{ color: "white" }}>
+                     Privacy Policy
+@@ -22,14 +29,14 @@ export const Footer = () => {
+                     Acceptable Use
+                 </a>
+             </div>
+-            <div className={styles.stackedLinks}>
+-                <a href="https://entelligage.com/" target="_blank" className={styles.rightLink} style={{ color: "white" }}>
+-                    &copy; {year} Entelligage Inc., All Rights Reserved.
+-                </a>
+-                <a href="https://mortgagemanuals.com/" target="_blank" className={styles.rightLink} style={{ color: "white" }}>
+-                    &copy; {year} Mortgage Manuals, All Rights Reserved.
+-                </a>
+-            </div>
++            <a href="https://mortgagemanuals.com/" target="_blank">
++                <div className={styles.smallRightLink}>
++                    &copy; {year} Mortgage Manuals
++                    <br />
++                    All Rights Reserved.
++                </div>
++                <div className={styles.rightLink}>&copy; {year} Mortgage Manuals, All Rights Reserved.</div>
++            </a>
+         </footer>
+     );
+ };
+#### app/frontend/src/components/HistoryItem/HistoryItem.module.css
+diff --git a/app/frontend/src/components/HistoryItem/HistoryItem.module.css b/app/frontend/src/components/HistoryItem/HistoryItem.module.css
+index 7424595..a35f617 100644
+--- a/app/frontend/src/components/HistoryItem/HistoryItem.module.css
++++ b/app/frontend/src/components/HistoryItem/HistoryItem.module.css
+@@ -11,6 +11,11 @@
+     background-color: #f3f4f6;
+ }
+ 
++.historyItem:hover .historyItemTitle {
++    text-decoration: underline;
++    color: blue;
++}
++
+ .historyItemButton {
+     flex-grow: 1;
+     text-align: left;
+@@ -25,7 +30,7 @@
+     font-size: 1rem;
+ }
+ 
+-.deleteIcon {
++.editIcon .deleteIcon {
+     width: 20px;
+     height: 20px;
+ }
+@@ -41,12 +46,29 @@
+     color: #6b7280;
+ }
+ 
++.editButton {
++    opacity: 0;
++    transition: opacity 0.2s;
++    background: none;
++    border: none;
++    cursor: pointer;
++    padding: 4px;
++    border-radius: 9999px;
++    color: #6b7280;
++}
++
+ .historyItem:hover .deleteButton,
+ .deleteButton:focus {
+     opacity: 1;
+ }
+ 
+-.deleteButton:hover {
++.historyItem:hover .editButton,
++.editButton:focus {
++    opacity: 1;
++}
++
++.deleteButton:hover,
++.editButton:hover {
+     color: #111827;
+ }
+ 
+@@ -92,6 +114,7 @@
+     gap: 16px;
+ }
+ 
++.modalSubmitButton,
+ .modalCancelButton,
+ .modalConfirmButton {
+     padding: 8px 16px;
+@@ -111,6 +134,11 @@
+     color: white;
+ }
+ 
++.modalSubmitButton {
++    background-color: blue;
++    color: white;
++}
++
+ .modalCancelButton:hover {
+     background-color: #e5e7eb;
+ }
+@@ -118,3 +146,15 @@
+ .modalConfirmButton:hover {
+     background-color: #dc2626;
+ }
++
++.modalSubmitButton:hover {
++    background-color: blue;
++}
++
++.modalInput {
++    width: 100%;
++    padding: 8px;
++    border-radius: 4px;
++    border: 1px solid #d1d5db;
++    margin-bottom: 16px;
++}
+#### app/frontend/src/components/HistoryItem/HistoryItem.tsx
+diff --git a/app/frontend/src/components/HistoryItem/HistoryItem.tsx b/app/frontend/src/components/HistoryItem/HistoryItem.tsx
+index 5aca674..c975720 100644
+--- a/app/frontend/src/components/HistoryItem/HistoryItem.tsx
++++ b/app/frontend/src/components/HistoryItem/HistoryItem.tsx
+@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
+ import { useTranslation } from "react-i18next";
+ import styles from "./HistoryItem.module.css";
+ import { DefaultButton } from "@fluentui/react";
+-import { Delete24Regular } from "@fluentui/react-icons";
++import { Delete24Regular, Edit24Regular } from "@fluentui/react-icons";
+ 
+ export interface HistoryData {
+     id: string;
+@@ -14,25 +14,43 @@ interface HistoryItemProps {
+     item: HistoryData;
+     onSelect: (id: string) => void;
+     onDelete: (id: string) => void;
++    onUpdateTitle: (id: string, title: string) => void;
+ }
+ 
+-export function HistoryItem({ item, onSelect, onDelete }: HistoryItemProps) {
+-    const [isModalOpen, setIsModalOpen] = useState(false);
++export function HistoryItem({ item, onSelect, onDelete, onUpdateTitle }: HistoryItemProps) {
++    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
++    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
++    const [newTitle, setNewTitle] = useState(item.title);
+ 
+     const handleDelete = useCallback(() => {
+-        setIsModalOpen(false);
++        setIsDeleteModalOpen(false);
+         onDelete(item.id);
+     }, [item.id, onDelete]);
+ 
++    const handleUpdateTitle = useCallback(() => {
++        setIsEditModalOpen(false);
++        onUpdateTitle(item.id, newTitle);
++    }, [item.id, newTitle, onUpdateTitle]);
++
+     return (
+         <div className={styles.historyItem}>
+             <button onClick={() => onSelect(item.id)} className={styles.historyItemButton}>
+                 <div className={styles.historyItemTitle}>{item.title}</div>
+             </button>
+-            <button onClick={() => setIsModalOpen(true)} className={styles.deleteButton} aria-label="delete this chat history">
++            <button onClick={() => setIsEditModalOpen(true)} className={styles.editButton} aria-label="edit this chat history">
++                <Edit24Regular className={styles.editIcon} />
++            </button>
++            <button onClick={() => setIsDeleteModalOpen(true)} className={styles.deleteButton} aria-label="delete this chat history">
+                 <Delete24Regular className={styles.deleteIcon} />
+             </button>
+-            <DeleteHistoryModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onConfirm={handleDelete} />
++            <DeleteHistoryModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} onConfirm={handleDelete} />
++            <EditHistoryModal
++                isOpen={isEditModalOpen}
++                onClose={() => setIsEditModalOpen(false)}
++                newTitle={newTitle}
++                setNewTitle={setNewTitle}
++                onConfirm={handleUpdateTitle}
++            />
+         </div>
+     );
+ }
+@@ -57,3 +75,42 @@ function DeleteHistoryModal({ isOpen, onClose, onConfirm }: { isOpen: boolean; o
+         </div>
+     );
+ }
++
++function EditHistoryModal({
++    isOpen,
++    onClose,
++    newTitle,
++    setNewTitle,
++    onConfirm
++}: {
++    isOpen: boolean;
++    onClose: () => void;
++    newTitle: string;
++    setNewTitle: (title: string) => void;
++    onConfirm: () => void;
++}) {
++    if (!isOpen) return null;
++    const { t } = useTranslation();
++    return (
++        <div className={styles.modalOverlay}>
++            <div className={styles.modalContent}>
++                <h2 className={styles.modalTitle}>{t("history.editModalTitle")}</h2>
++                <input
++                    type="text"
++                    value={newTitle}
++                    onChange={e => setNewTitle(e.target.value)}
++                    className={styles.modalInput}
++                    placeholder={t("history.editModalPlaceholder")}
++                />
++                <div className={styles.modalActions}>
++                    <DefaultButton onClick={onClose} className={styles.modalCancelButton}>
++                        {t("history.cancelLabel")}
++                    </DefaultButton>
++                    <DefaultButton onClick={onConfirm} className={styles.modalSubmitButton}>
++                        {t("history.submitLabel")}
++                    </DefaultButton>
++                </div>
++            </div>
++        </div>
++    );
++}
+#### app/frontend/src/components/HistoryPanel/HistoryPanel.tsx
+diff --git a/app/frontend/src/components/HistoryPanel/HistoryPanel.tsx b/app/frontend/src/components/HistoryPanel/HistoryPanel.tsx
+index acaf3b7..16b8291 100644
+--- a/app/frontend/src/components/HistoryPanel/HistoryPanel.tsx
++++ b/app/frontend/src/components/HistoryPanel/HistoryPanel.tsx
+@@ -64,6 +64,12 @@ export const HistoryPanel = ({
+         setHistory(prevHistory => prevHistory.filter(item => item.id !== id));
+     };
+ 
++    const handleUpdateTitle = async (id: string, title: string) => {
++        const token = client ? await getToken(client) : undefined;
++        await historyManager.updateTitle(id, title, token);
++        setHistory(prevHistory => prevHistory.map(item => (item.id === id ? { ...item, title } : item)));
++    };
++
+     const groupedHistory = useMemo(() => groupHistory(history), [history]);
+ 
+     const { t } = useTranslation();
+@@ -88,7 +94,7 @@ export const HistoryPanel = ({
+                     <div key={group} className={styles.group}>
+                         <p className={styles.groupLabel}>{t(group)}</p>
+                         {items.map(item => (
+-                            <HistoryItem key={item.id} item={item} onSelect={handleSelect} onDelete={handleDelete} />
++                            <HistoryItem key={item.id} item={item} onSelect={handleSelect} onDelete={handleDelete} onUpdateTitle={handleUpdateTitle} />
+                         ))}
+                     </div>
+                 ))}
+#### app/frontend/src/components/HistoryProviders/CosmosDB.ts
+diff --git a/app/frontend/src/components/HistoryProviders/CosmosDB.ts b/app/frontend/src/components/HistoryProviders/CosmosDB.ts
+index 5da9df5..82afd91 100644
+--- a/app/frontend/src/components/HistoryProviders/CosmosDB.ts
++++ b/app/frontend/src/components/HistoryProviders/CosmosDB.ts
+@@ -1,5 +1,5 @@
+ import { IHistoryProvider, Answers, HistoryProviderOptions, HistoryMetaData } from "./IProvider";
+-import { deleteChatHistoryApi, getChatHistoryApi, getChatHistoryListApi, postChatHistoryApi } from "../../api";
++import { deleteChatHistoryApi, getChatHistoryApi, getChatHistoryListApi, postChatHistoryApi, updateChatHistoryTitleApi } from "../../api";
+ 
+ export class CosmosDBProvider implements IHistoryProvider {
+     getProviderName = () => HistoryProviderOptions.CosmosDB;
+@@ -48,4 +48,9 @@ export class CosmosDBProvider implements IHistoryProvider {
+         await deleteChatHistoryApi(id, idToken || "");
+         return;
+     }
++
++    async updateTitle(id: string, title: string, idToken?: string): Promise<void> {
++        await updateChatHistoryTitleApi(id, title, idToken || "");
++        return;
++    }
+ }
+#### app/frontend/src/components/HistoryProviders/IProvider.ts
+diff --git a/app/frontend/src/components/HistoryProviders/IProvider.ts b/app/frontend/src/components/HistoryProviders/IProvider.ts
+index 026443d..64b47ec 100644
+--- a/app/frontend/src/components/HistoryProviders/IProvider.ts
++++ b/app/frontend/src/components/HistoryProviders/IProvider.ts
+@@ -16,4 +16,5 @@ export interface IHistoryProvider {
+     addItem(id: string, answers: Answers, idToken?: string): Promise<void>;
+     getItem(id: string, idToken?: string): Promise<Answers | null>;
+     deleteItem(id: string, idToken?: string): Promise<void>;
++    updateTitle(id: string, title: string, idToken?: string): Promise<void>;
+ }
+#### app/frontend/src/components/HistoryProviders/IndexedDB.ts
+diff --git a/app/frontend/src/components/HistoryProviders/IndexedDB.ts b/app/frontend/src/components/HistoryProviders/IndexedDB.ts
+index ca8fa19..c35baad 100644
+--- a/app/frontend/src/components/HistoryProviders/IndexedDB.ts
++++ b/app/frontend/src/components/HistoryProviders/IndexedDB.ts
+@@ -101,4 +101,15 @@ export class IndexedDBProvider implements IHistoryProvider {
+         await db.delete(this.storeName, id);
+         return;
+     }
++
++    async updateTitle(id: string, title: string): Promise<void> {
++        const db = await this.init();
++        const tx = db.transaction(this.storeName, "readwrite");
++        const item = await tx.objectStore(this.storeName).get(id);
++        if (item) {
++            item.title = title;
++            await tx.objectStore(this.storeName).put(item);
++        }
++        await tx.done;
++    }
+ }
+#### app/frontend/src/components/HistoryProviders/None.ts
+diff --git a/app/frontend/src/components/HistoryProviders/None.ts b/app/frontend/src/components/HistoryProviders/None.ts
+index a662d54..0f95ad1 100644
+--- a/app/frontend/src/components/HistoryProviders/None.ts
++++ b/app/frontend/src/components/HistoryProviders/None.ts
+@@ -17,4 +17,7 @@ export class NoneProvider implements IHistoryProvider {
+     async deleteItem(id: string): Promise<void> {
+         return;
+     }
++    async updateTitle(id: string, title: string): Promise<void> {
++        return;
++    }
+ }
+#### app/frontend/src/locales/en/translation.json
+diff --git a/app/frontend/src/locales/en/translation.json b/app/frontend/src/locales/en/translation.json
+index 094fc22..359a6ca 100644
+--- a/app/frontend/src/locales/en/translation.json
++++ b/app/frontend/src/locales/en/translation.json
+@@ -12,8 +12,11 @@
+         "noHistory": "No chat history",
+         "deleteModalTitle": "Delete chat history",
+         "deleteModalDescription": "This action cannot be undone. Delete this chat history?",
++        "editModalTitle": "Enter a new conversation name:",
++        "editModalPlaceholder": "ex: 'Income Calculations'",
+         "deleteLabel": "Delete",
+         "cancelLabel": "Cancel",
++        "submitLabel": "Submit",
+         "today": "Today",
+         "yesterday": "Yesterday",
+         "last7days": "Last 7 days",
+#### app/frontend/src/pages/chat/Chat.module.css
+diff --git a/app/frontend/src/pages/chat/Chat.module.css b/app/frontend/src/pages/chat/Chat.module.css
+index 77a00ae..514d9b8 100644
+--- a/app/frontend/src/pages/chat/Chat.module.css
++++ b/app/frontend/src/pages/chat/Chat.module.css
+@@ -16,7 +16,7 @@
+     flex-direction: column;
+     align-items: center;
+     width: 100%;
+-    max-height: calc(100vh - 10rem);
++    max-height: 100%;
+ }
+ 
+ .chatEmptyState {
+#### app/frontend/src/pages/layout/Layout.module.css
+diff --git a/app/frontend/src/pages/layout/Layout.module.css b/app/frontend/src/pages/layout/Layout.module.css
+index 7a86702..bd6d3b0 100644
+--- a/app/frontend/src/pages/layout/Layout.module.css
++++ b/app/frontend/src/pages/layout/Layout.module.css
+@@ -6,6 +6,8 @@
+ 
+ .content {
+     flex: 1;
++    padding: 0;
++    margin: 0;
+ }
+ 
+ .header {
+#### infra/main.bicep
+diff --git a/infra/main.bicep b/infra/main.bicep
+index f305f64..c890dde 100644
+--- a/infra/main.bicep
++++ b/infra/main.bicep
+@@ -857,7 +857,7 @@ module cosmosDb 'br/public:avm/res/document-db/database-account:0.6.1' = if (use
+                 }
+                 {
+                   path: '/type/?'
+-                }
++                }                
+               ]
+               excludedPaths: [
+                 {
+@@ -865,6 +865,7 @@ module cosmosDb 'br/public:avm/res/document-db/database-account:0.6.1' = if (use
+                 }
+               ]
+             }
++            defaultTtl:-1
+           }
+         ]
+       }
+
+
+---
 Generated on: 2025-02-25 10:51:05
 
 ### Changes made:
