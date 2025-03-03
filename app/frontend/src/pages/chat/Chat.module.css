@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-height: calc(100vh - 10rem);
+    max-height: 100%;
 }
 
 .chatEmptyState {
@@ -32,8 +32,9 @@
 .chatEmptyStateTitle {
     font-size: 1.75rem;
     font-weight: 600;
-    margin-top: 1;
+    margin-top: 0.5rem;
     margin-bottom: 0rem;
+    color: rgb(75, 94, 196);
 }
 
 .chatEmptyStateSubtitle {
@@ -122,11 +123,11 @@
     }
 
     .chatEmptyState {
-        padding-top: 3.75rem;
+        padding-top: 0.75rem;
     }
 
     .chatEmptyStateTitle {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
 
     .chatInput {

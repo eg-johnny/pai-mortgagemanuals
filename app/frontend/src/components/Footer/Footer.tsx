@@ -5,9 +5,16 @@ export const Footer = () => {
     const year = new Date().getFullYear();
     return (
         <footer className={styles.footer}>
-            <a href="https://entelligage.com/" target="_blank">
-                <img src="https://stjeegpqns5eeds.blob.core.windows.net/assets/EntelligageAI-Banner.png" alt="Logo" className={styles.logo} />
-            </a>
+            <div className={styles.stackedLinks}>
+                <a href="https://entelligage.com/" target="_blank" className={styles.egLogo}>
+                    <img src="https://stjeegpqns5eeds.blob.core.windows.net/assets/EntelligageAI-Banner.png" alt="Logo" className={styles.logo} />
+                </a>
+                <div className={styles.smallCopyRight}>
+                    &copy; {year} Entelligage Inc. <br />
+                    All Rights Reserved
+                </div>
+                <div className={styles.copyRight}>&copy; {year} Entelligage Inc. All Rights Reserved</div>
+            </div>
             <div className={styles.links}>
                 <a href="https://entelligage.com/privacy-policy" target="_blank" style={{ color: "white" }}>
                     Privacy Policy
@@ -22,14 +29,14 @@ export const Footer = () => {
                     Acceptable Use
                 </a>
             </div>
-            <div className={styles.stackedLinks}>
-                <a href="https://entelligage.com/" target="_blank" className={styles.rightLink} style={{ color: "white" }}>
-                    &copy; {year} Entelligage Inc., All Rights Reserved.
-                </a>
-                <a href="https://mortgagemanuals.com/" target="_blank" className={styles.rightLink} style={{ color: "white" }}>
-                    &copy; {year} Mortgage Manuals, All Rights Reserved.
-                </a>
-            </div>
+            <a href="https://mortgagemanuals.com/" target="_blank">
+                <div className={styles.smallRightLink}>
+                    &copy; {year} Mortgage Manuals
+                    <br />
+                    All Rights Reserved.
+                </div>
+                <div className={styles.rightLink}>&copy; {year} Mortgage Manuals, All Rights Reserved.</div>
+            </a>
         </footer>
     );
 };

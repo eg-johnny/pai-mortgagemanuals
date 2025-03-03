@@ -1,5 +1,5 @@
 import { IHistoryProvider, Answers, HistoryProviderOptions, HistoryMetaData } from "./IProvider";
-import { deleteChatHistoryApi, getChatHistoryApi, getChatHistoryListApi, postChatHistoryApi } from "../../api";
+import { deleteChatHistoryApi, getChatHistoryApi, getChatHistoryListApi, postChatHistoryApi, updateChatHistoryTitleApi } from "../../api";
 
 export class CosmosDBProvider implements IHistoryProvider {
     getProviderName = () => HistoryProviderOptions.CosmosDB;
@@ -46,6 +46,11 @@ export class CosmosDBProvider implements IHistoryProvider {
 
     async deleteItem(id: string, idToken?: string): Promise<void> {
         await deleteChatHistoryApi(id, idToken || "");
+        return;
+    }
+
+    async updateTitle(id: string, title: string, idToken?: string): Promise<void> {
+        await updateChatHistoryTitleApi(id, title, idToken || "");
         return;
     }
 }

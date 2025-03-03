@@ -101,4 +101,15 @@ export class IndexedDBProvider implements IHistoryProvider {
         await db.delete(this.storeName, id);
         return;
     }
+
+    async updateTitle(id: string, title: string): Promise<void> {
+        const db = await this.init();
+        const tx = db.transaction(this.storeName, "readwrite");
+        const item = await tx.objectStore(this.storeName).get(id);
+        if (item) {
+            item.title = title;
+            await tx.objectStore(this.storeName).put(item);
+        }
+        await tx.done;
+    }
 }

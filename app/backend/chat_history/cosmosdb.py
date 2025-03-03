@@ -50,6 +50,7 @@ async def post_chat_history(auth_claims: Dict[str, Any]):
             "type": "session",
             "title": title,
             "timestamp": timestamp,
+            "isDeleted": 0,
         }
 
         message_pair_items = []
@@ -64,7 +65,7 @@ async def post_chat_history(auth_claims: Dict[str, Any]):
                     "type": "message_pair",
                     "question": message_pair[0],
                     "response": message_pair[1],
-                }
+                    "isDeleted": 0,                }
             )
 
         batch_operations = [("upsert", (session_item,))] + [
@@ -95,7 +96,7 @@ async def get_chat_history_sessions(auth_claims: Dict[str, Any]):
         continuation_token = request.args.get("continuation_token")
 
         res = container.query_items(
-            query="SELECT c.id, c.entra_oid, c.title, c.timestamp FROM c WHERE c.entra_oid = @entra_oid AND c.type = @type ORDER BY c.timestamp DESC",
+            query="SELECT c.id, c.entra_oid, c.title, c.timestamp FROM c WHERE c.isDeleted = 0 AND c.entra_oid = @entra_oid AND c.type = @type ORDER BY c.timestamp DESC",
             parameters=[dict(name="@entra_oid", value=entra_oid), dict(name="@type", value="session")],
             partition_key=[entra_oid],
             max_item_count=count,
@@ -145,7 +146,7 @@ async def get_chat_history_session(auth_claims: Dict[str, Any], session_id: str)
 
     try:
         res = container.query_items(
-            query="SELECT * FROM c WHERE c.session_id = @session_id AND c.type = @type",
+            query="SELECT * FROM c WHERE c.isDeleted = 0 AND c.session_id = @session_id AND c.type = @type",
             parameters=[dict(name="@session_id", value=session_id), dict(name="@type", value="message_pair")],
             partition_key=[entra_oid, session_id],
         )
@@ -189,17 +190,58 @@ async def delete_chat_history_session(auth_claims: Dict[str, Any], session_id: s
             parameters=[dict(name="@session_id", value=session_id)],
             partition_key=[entra_oid, session_id],
         )
-
-        ids_to_delete = []
+        
         async for page in res.by_page():
             async for item in page:
-                ids_to_delete.append(item["id"])
-
-        batch_operations = [("delete", (id,)) for id in ids_to_delete]
-        await container.execute_item_batch(batch_operations=batch_operations, partition_key=[entra_oid, session_id])
+                item_id = item["id"]
+                operations =[{ 'op': 'replace', 'path': '/isDeleted', 'value': 1 }]
+                await container.patch_item(item=item_id, partition_key=[entra_oid, session_id], patch_operations=operations)        
         return await make_response("", 204)
     except Exception as error:
         return error_response(error, f"/chat_history/sessions/{session_id}")
+
+
+@chat_history_cosmosdb_bp.put("/chat_history/sessions/<session_id>/title")
+@authenticated
+async def update_chat_history_session_title(auth_claims: Dict[str, Any], session_id: str):
+    if not current_app.config[CONFIG_CHAT_HISTORY_COSMOS_ENABLED]:
+        return jsonify({"error": "Chat history not enabled"}), 400
+
+    container: ContainerProxy = current_app.config[CONFIG_COSMOS_HISTORY_CONTAINER]
+    if not container:
+        return jsonify({"error": "Chat history not enabled"}), 400
+
+    entra_oid = auth_claims.get("oid")
+    if not entra_oid:
+        return jsonify({"error": "User OID not found"}), 401
+
+    try:
+        request_json = await request.get_json()
+        new_title = request_json.get("title")
+        if not new_title:
+            return jsonify({"error": "Title is required"}), 400
+
+        res = container.query_items(
+            query="SELECT * FROM c WHERE c.session_id = @session_id AND c.type = @type",
+            parameters=[dict(name="@session_id", value=session_id), dict(name="@type", value="session")],
+            partition_key=[entra_oid, session_id],
+        )
+
+        session_item = None
+        async for page in res.by_page():
+            async for item in page:
+                session_item = item
+                break
+
+        if not session_item:
+            return jsonify({"error": "Session not found"}), 404
+
+        session_item["title"] = new_title
+        await container.upsert_item(session_item)
+
+        return jsonify({"message": "Title updated successfully"}), 200
+    except Exception as error:
+        return error_response(error, f"/chat_history/sessions/{session_id}/title")
 
 
 @chat_history_cosmosdb_bp.before_app_serving
