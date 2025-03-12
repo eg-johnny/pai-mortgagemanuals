@@ -40,7 +40,7 @@
     "chatEmptyStateTitle": "Your Mortgage Process Assistant",
     "chatEmptyStateSubtitle": "Ask anything about your mortgage policies and procedures.",
     "defaultExamples": {
-        "1": "How many days do I have to send out an LE?",
+        "1": "What are the triggers for sending out an LE?",
         "2": "What are the FHA underwriting guidelines?",
         "3": "What are the key requirements for a Quality Control Plan?",
         "placeholder": "Type a new question (e.g., What are the RESPA disclosure requirements?)"

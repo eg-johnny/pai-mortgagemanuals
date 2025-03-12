@@ -113,7 +113,7 @@ class ChatApproach(Approach, ABC):
         # For developer settings
         # overrides = context.get("overrides", {}) 
         overrides =  {
-                        "top": 3,
+                        "top": 20,
                         "temperature": 0.3,
                         "minimum_reranker_score": 0,
                         "minimum_search_score": 0,
@@ -138,7 +138,7 @@ class ChatApproach(Approach, ABC):
     ) -> AsyncGenerator[dict[str, Any], None]:
         # overrides = context.get("overrides", {})
         overrides =  {
-                        "top": 3,
+                        "top": 20,
                         "temperature": 0.3,
                         "minimum_reranker_score": 0,
                         "minimum_search_score": 0,

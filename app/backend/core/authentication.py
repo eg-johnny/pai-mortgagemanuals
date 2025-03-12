@@ -43,7 +43,6 @@ class AuthenticationHelper:
         server_app_secret: Optional[str],
         client_app_id: Optional[str],
         tenant_id: Optional[str],
-        tenant_name: Optional[str],
         require_access_control: bool = False,
         enable_global_documents: bool = False,
         enable_unauthenticated_access: bool = False,
