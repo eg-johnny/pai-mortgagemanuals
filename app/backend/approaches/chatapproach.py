@@ -110,7 +110,23 @@ class ChatApproach(Approach, ABC):
         session_state: Any = None,
         context: dict[str, Any] = {},
     ) -> dict[str, Any]:
-        overrides = context.get("overrides", {})
+        # For developer settings
+        # overrides = context.get("overrides", {}) 
+        overrides =  {
+                        "top": 20,
+                        "temperature": 0.3,
+                        "minimum_reranker_score": 0,
+                        "minimum_search_score": 0,
+                        "retrieval_mode": "hybrid",
+                        "semantic_ranker": True,
+                        "semantic_captions": False,
+                        "suggest_followup_questions": False,
+                        "use_oid_security_filter": False,
+                        "use_groups_security_filter": False,
+                        "vector_fields": ["embedding", "imageEmbedding"],
+                        "use_gpt4v": True,
+                        "gpt4v_input": "textAndImages",
+                    }
         auth_claims = context.get("auth_claims", {})
         return await self.run_without_streaming(messages, overrides, auth_claims, session_state)
 
@@ -120,6 +136,21 @@ class ChatApproach(Approach, ABC):
         session_state: Any = None,
         context: dict[str, Any] = {},
     ) -> AsyncGenerator[dict[str, Any], None]:
-        overrides = context.get("overrides", {})
+        # overrides = context.get("overrides", {})
+        overrides =  {
+                        "top": 20,
+                        "temperature": 0.3,
+                        "minimum_reranker_score": 0,
+                        "minimum_search_score": 0,
+                        "retrieval_mode": "hybrid",
+                        "semantic_ranker": True,
+                        "semantic_captions": False,
+                        "suggest_followup_questions": False,
+                        "use_oid_security_filter": False,
+                        "use_groups_security_filter": False,
+                        "vector_fields": ["embedding", "imageEmbedding"],
+                        "use_gpt4v": True,
+                        "gpt4v_input": "textAndImages",
+                    }
         auth_claims = context.get("auth_claims", {})
         return self.run_with_streaming(messages, overrides, auth_claims, session_state)

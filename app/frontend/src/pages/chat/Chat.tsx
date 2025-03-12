@@ -324,6 +324,19 @@ const Chat = () => {
     };
 
     const onShowCitation = (citation: string, index: number) => {
+        const fileExtension = citation.split(".").pop()?.toLowerCase();
+        console.log("FILE EXTENSION: ", fileExtension);
+        if (fileExtension === "docx" || fileExtension === "xlsx") {
+            // Trigger download for .docx and .xlsx files
+            const link = document.createElement("a");
+            link.href = citation;
+            link.download = citation.split("/").pop() || "download";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            return;
+        }
+
         if (activeCitation === citation && activeAnalysisPanelTab === AnalysisPanelTabs.CitationTab && selectedAnswer === index) {
             setActiveAnalysisPanelTab(undefined);
         } else {
