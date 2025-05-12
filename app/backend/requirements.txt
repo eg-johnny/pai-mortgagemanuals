@@ -439,7 +439,7 @@ typing-extensions==4.12.2
     #   opentelemetry-sdk
     #   pydantic
     #   pydantic-core
-tzdata==2024.1
+tzdata==2025.2
     # via pendulum
 urllib3==2.2.2
     # via requests
