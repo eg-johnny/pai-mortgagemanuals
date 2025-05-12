@@ -1,0 +1,4 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/extraction-env/Scripts/python.exe",
+    "python.terminal.activateEnvInCurrentTerminal": true
+}

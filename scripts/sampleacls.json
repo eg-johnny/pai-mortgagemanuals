@@ -1,0 +1,1369 @@
+{
+    "files": {
+        "1-0 Quality Control Plan.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control"
+        },
+        "HUD 4000 1 QC Plan Review.xlsx.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control"
+        },
+        "HUD QC Plan Review 8-23.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control"
+        },
+        "HUD QC Plan Revisions Locations - 3-14-22.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control"
+        },
+        "CFPB Examination Elements Matrix.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-1 QC Quality Control Review Spot Check Form - Loan Level QC Report.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-10 QC Occupancy Re-Verification.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-11 QC Reverification of Employment or Deposit Letter.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-1A QC DEL Loan Level Audit Report.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-2 QC Quality Control File Order Checklist.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-20 QC COMP OP HUD Site Review Checklist Form.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 1-3 QC ORIG PROC UW CLOS Fraud - Red Flag Checklist.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 1-30 QC Appraisal Review Log.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-31 QC UW PROC OP Checklist-Appraisal Review Form.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 1-32 QC Credit Report Log.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-34 QC Field Appraisal Review Request.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-4 QC Closed-Cancelled Audit Prep Financial-Compliance Checklist.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-40 QC Agency Pipeline Random Selection Tool.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-40 QC FHA Pipeline Random Selection Tool.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-41 QC FHA-Conv Pipeline Random Selection Tool.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-64 QC COMP CFPB Examination Elements Matrix.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-65 ORIG PROC UW CLOS QC Fraud - Red Flag Checklist.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-70 AML Red Flags Check -Transactional and High Risk Business.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 1-70 QC PROC UW CLOS AML Red Flags Checklist.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 1-70-1 QC AML-BSA Self Audit Checklist.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-70-7 AML Risk Assessment .pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-80 QC COMP Mortgage Risk Assessment (1).pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 3-1 ORIG PROC UW COMP Complete Application Checklist (Notice of Incomplete Application).pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 3-15 ORIG PROC UW CLOS COMP QC Notice of Changed Circumstances.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 3-8 ORIG PROC UW CLOS QC Notice of Changed Circumstances.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 4-02 PROC QC Appraisal Request.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 4-1 PROC UW QC Processing Underwriting Quality Control Production Checklist 3-2021.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-1 PROC UW QC Processing Underwriting Quality Control Production Checklist.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 4-1A QC PROC UW Master Production and Audit Quality Control Checklist.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 4-2 PROC QC Appraisal Request Form.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-31 PROC CLOS UW QC TRID Loan Estimate and Closing Disclosure Review.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 4-32 PROC QC Basic Loan Submission Process Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-33 PROC UW QC Processing Underwriting Quality Control Production Checklist.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 6-1 CLOS QC Pre-Funding Review and Document Preparation Checklist.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 6-10 CLOS QC SERV Post-Closing Document Review Checklist.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 6-11 CLOS QC SERV SEC Warehouse Insure-Guaranty and Closed Loan Delivery Checklist.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "FORM 6-2 CLOS QC Pre-Closing Document Prep Funding Review.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "Quality Control Plan Revew Checklist.pdf": {
+            "directory": "banker/1-0 Lender-Banker Quality Control/Forms"
+        },
+        "1-A Broker MiniC QC Plan.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan"
+        },
+        "CHART 4-51 PROC Document Naming Convention (1).pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "Complete Application Checklist (Notice of Incomplete Application).pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "Disclosures exhibits to Send and Retain - Broker and Lender.pdf": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "File Stack Order - Conventional.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 1-05 QC Occupancy Re-Verification.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-4 QC PROC Closed File Pre-Audit Compliance Checklist.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-5 Non-Del Quality Control Summary Report.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-5 Quality Control Report.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-65 QC ORIG PROC UW CLOS Fraud Red Flags Checklist.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 4-33 PROC UW QCProcessing Underwriting Quality Control Production Checklist.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM PROC 4-32 Basic Loan Submission Process Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM PROC UW QC 4-33 Processing Underwriting Quality Control Production Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Master Production and Audit Quality Control Checklist.pdf": {
+            "directory": "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "Pre-Underwriting Production Checklist - QC Master.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "2-0 Compliance Policies and Procedures.pdf": {
+            "directory": "banker/2-0 Compliance"
+        },
+        "Approved Appraiser Roster.pdf": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "Compliance Audit Checklist.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "Compliance Manager Duties and Schedule.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FACTA Disclosure Sample.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FairLendingPoster.pdf": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 1-65 QC COMP CFPB Examination Elements Matrix.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 2-35-26 COMP ORIG Reverse Mortgage Disclosure Sample.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 2-35-3 COMP 2NDRY High cost-fee Worksheet v2.pdf": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 2-71-1 ORIG COMP Anti-Steering Borrowers Best Interest Disclosure Safe Harbor.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 2-71-2 Current Compensation Plans.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 2-71-2 LO Comp Plan - Commissions - Individual.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 2-73-2 COMP ORIG PROC Borrower AIR Appraisal Notice.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 2-81 COMP OPS ORIG Complaint Report and Log.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 2-81 Complaint report.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 3-10 Loan Officer Compensation Plan Template Sample - REVIEW WITH COUNSEL.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-21 ORIG COMPL Advertising and Website Review Checklist.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 4-31 COMP ORIG PROC Borrower Appraisal Notice.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "FORM 7-26-1 OPS COMP New Hire Checklist.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "High cost-fee Worksheet v2.pdf": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "Non Traditional Loan Comparison Chart For Anti-Predatory Lending.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "Section 32 High Cost Worksheet.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "Tangible Net Benefit Certification.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "TRAIN 2-40 Fair Lending Laws.pdf": {
+            "directory": "banker/2-0 Compliance/Forms"
+        },
+        "2-01 Compliance Manager - Duties and Responsibilities.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-02 Federal Regulatory Compliance Program Overview.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-05 State Regulatory Compliance - Regulatory Highlight Checklist.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-10 RESPA Overview.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-11 RESPA - Prohibited - Kickbacks and Referral Fees.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-14 TRID Policies and Procedures.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-15 Reviewing Closing Disclosure CD or HUD-1 against LE-GFE Estimates.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-31 - TIL APR (Annual Percentage Rate) Calculations and Tolerance.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-32 TIL Additional Disclosures.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-33 Notice of Right to Cancel (Right to Rescind).pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-34 Advertising.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-35 Unfair Deceptive Abusive Acts and Practices - High Cost Loans - Predatory Lending.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-35-61 HPML Appraisal Policy.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-36 Mortgage Disclosure Improvement Act.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-37 Ability to Repay.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-40 Equal Credit Opportunity Act.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-42 HMDA Home Mortgage Disclosure Act.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-43 Fair Housing Act.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-44 Fair Credit Reporting Act.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-44-2 Credit Report Ordering Policies and Procedures.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-45 FACTA Overview.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-46 Homeowners Protection Act (PMI Cancellation).pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-47 Gramm-Leach-Bliley Privacy Act.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-47-2 PATRIOT Act and OFAC Policies and Procedures.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-48 E-SIGN Mortgage Procedures and Policies.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-70 SAFE Act.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-70-15 NMLS Call Reporting Process.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-71 Compensation and Anti-Steering.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-72 Pre- and Post-Employment Screening Procedure.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-72-4 Employee Training Policies and Procedures.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-73 Appraiser Independence Process.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-80 Complaint Resolution.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-81 Complaint Form Resolution and Report.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-97 Disaster Recovery and Business Continuity.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-A Policy in Practice QuickNotes.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "2-NY New York State Compliance Program.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "3-83 Ethics Policies and Procedures.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "3-84 Whistleblower Policy.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "7-10 Social Media Policy.pdf": {
+            "directory": "banker/7-0 Operations"
+        },
+        "PIP 1-70 Bank Secrecy Act_Anti-Money Laundering Procedures (1).pdf": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "PIP 1-85 Broker_Non-Delegated Correspondent QC Process.pdf": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "PIP 2-0 Regulatory Compliance Matrix (2).pdf": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "PIP 2-70 SAFE Act.pdf": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "PIP 2-73 AIR Appraiser Independence Rules (1).pdf": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "PIP 2-90 IT Security Policies and Procedures.pdf": {
+            "directory": "banker/2-0 Compliance Indexed"
+        },
+        "PIP 2-93 RED Flag ID Theft Policies and Procedures.pdf": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-90 IT Safeguarding and ID Theft.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft"
+        },
+        "2-90 FACTA-IDTheft-InfoSecurity.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "FORM - 2-92-1 Sample Data Breach Notification Letter - Freddie Mac.pdf": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM - 2-92-1 Sample Date Breach Notification - Loan Depot.pdf": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-90-25 IT Security Inventory.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "FORM 2-91-1 IT Vendor Review Checklist.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "FORM 2-92 Data Breach Analysis and Report.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "FORM 2-92-3 IT Information Security Vendor Program Verification.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "FORM 2-93-4 Red Flag Issue Report Form.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "FORM 2-94-1 Remote Work Setup Checklist.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "FORM 2-95 IT Protect your Identity Day.pdf": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-97-1 Disaster Preparation Checklist_Pre-Drill Assessment (2).pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "FORM 2-97-2 Fire Drill_Disaster Checklist and Report (1).pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "Front Door Unattended Sign.pdf": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "Poster - Clean Desk.pdf": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "Red Flag Matrix.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "Red Flag Plan Checklist.pdf": {
+            "directory": "banker/2-90 Information Security amd ID Theft/Forms"
+        },
+        "Side Door Sign.pdf": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "3-0 Origination Module.pdf": {
+            "directory": "banker/3-0 Origination"
+        },
+        "Advertising Checklist.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Best Interests Worksheet.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Borrower Appraisal Notice.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Borrowers Best Interest Disclosure (anti-steering).pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Call In Questionnaire.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Commissions Report.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-03 ORIG PROC Complete Application Checklist (Notice of Incomplete Application).pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-04 Homebuyers Finance Guide and Pre-Application Kit.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-09 ORIG Call In Questionnaire.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-13 ORIG COMP Pricing Exception Request.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-14 File Divider Loan Setup Checklists.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-25 Interest Rate Lock In Notification.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-25-1 ORIG COMP Pre-Qualification Letter.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-25-2 ORIG Pre-Qualification and Qualification Worksheet.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-30 Commissions Report.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-39 Loan Originator Employment Agreement - SAMPLE REVIEW WITH COUNSEL.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-41 ORIG COMP Call In Questionnaire.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-50 ORIG PROC Status Report.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-80 ORIG PROC CLOS Borrower Closing Preparation Worksheet.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-81 Loan Officer Intro Package.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM 3-82 Loan Officer Tracking Sheet.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "FORM ORIG 3-13 Pricing Exception Request.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Gift Letter.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Homebuyers Finance Guide and Pre-Application Kit.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Interest Rate Lock In Notification.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Loan Officer Intro Package.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Loan Originator Compensation Agreement.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Mortgage Loan Lock-in Agreement.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Mortgage Loan Lock-in Financing Agreement.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "Originator File Set Up Quality Control Review Checklist.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "SuperQual 12.pdf": {
+            "directory": "banker/3-0 Origination/Forms"
+        },
+        "4-0 Processing Module.pdf": {
+            "directory": "banker/4-0 Processing"
+        },
+        "1038-Net Rental Calculation.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "1084.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "Additional Information Request.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "Appraisal Request Form Sample.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Appraisal Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Approval Letter.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "Approved Appraiser Application.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Approved Appraiser Roster and Order Rotation.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Approved Appraiser Roster Sample.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Assignment Letter.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Basic Loan Submission Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Borrower's Certification & Authorization.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Closed Loan Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Closing Preparation Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Closing Requirement Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Comparative Income.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "Complete Application Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Condo - Homeowner's Insurance Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Condo PUD Letter.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Conventional Stacking Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Credit Report Fax Order-Correction.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "File Submission Process Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-01 PROC Loan File Set Up Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-02 PROC-QC Appraisal Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-03 PROC ORIG Condo PUD Letter.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-07 PROC File Stack Order - Conv-FHA-VA.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-08 PROC Additional Information Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-1 QC PROC UW Pre-Underwriting Production Checklist - Decision Tree.xls.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 4-11 Welcome Disclosure Package Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-11-1 Sample Welcome Package - Processing Merge Documents.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-13 Loan Log.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-1A QC PROC UW Master Production and Audit Quality Control Checklist.xls.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 4-2 Appraisal Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-26 PROC CLOS Condo PUD Homeowner Insurance Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-30 COMP ORIG PROC Borrower Appraisal Notice.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-31 PROC UW CLOS QC TRID Loan Estimate and Closing Disclosure Review.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 4-31 TRID Loan Estimate and Closing Disclosure Review PROC UW CLOS QC.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-35 Condo - Homeowner's Insurance Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-50 PROC ORIG Loan Level Status Log.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 4-64-03 PROC UW Income Calculation Worksheet.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM 4-64-41 PROC Income Analysis - Simple.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM 5-10 UW Underwriter Worksheet.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "FORM DISC 4-31 Borrower Appraisal Notice.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM DISC 4-50 Borrower's Certification & Authorization.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM PROC 4-01 Loan File Set Up Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM PROC 4-03 Condo PUD Letter.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM PROC 4-07 File Stack Order - Conv-FHA-VA.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM PROC 4-08 Additional Information Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM PROC 4-64-41 Income Analysis - Simple.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM PROC UW 4-64-03 Income Calculation Worksheet.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "FORM PROC-QC 4-02 Appraisal Request.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Income Analysis - Simple.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "IncomeCalculationWorksheet.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Loan File Set Up Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Loan Log.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Loan Plan Specification Review.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Loan Specifications - FHA.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "MDIA TIL Broker Addendum.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "MGIC Self-Employed and Rental Income Analysis (Fillable) 12-10-2014.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "Notice of Changed Circumstances - GFE-2010.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Radian Self-Employment Cash Flow and Rental Income Analysis Calculator12-14.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "Random Appraisal Order Form.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "SE AGI Method Analysis.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "SE Schedule Analysis.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Simple Income Analysis.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "T-I-L Explanation.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Underwriting Analysis Report-Approval Notification.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "Verbal Employment Verification.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "Verbal Verification of Employment.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "verbal voe.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Welcome Disclosure Package Checklist.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "Welcome Package - Processing Merge Documents.pdf": {
+            "directory": "banker/4-0 Processing/Forms"
+        },
+        "5-0 Underwriting Module.pdf": {
+            "directory": "banker/5-0 Underwriting"
+        },
+        "SampleATRPolicy.pdf": {
+            "directory": "banker/5-0 Underwriting"
+        },
+        "Appraiser Approval Application.pdf": {
+            "directory": "banker/5-0 Underwriting/Forms"
+        },
+        "6-0 Closing Module.pdf": {
+            "directory": "banker/6-0 Closing"
+        },
+        "FORM CLOS 1 Pre-Funding Review and Document Preparation Checklist.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 10 Post-Closing Document Review Checklist.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 11 Warehouse Insure-Guaranty and Closed Loan Delivery Checklist.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 12 FHA-HUD Endorsement Binder Stack Order Checklist.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 21 Approved Attorney Application.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 31 Settlement Exception Report.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 4 Fee Sheet.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 41 Condominium Document Management System Checklist.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 5 Closing Notification Tickler.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM CLOS 8 Warehouse Funding Calculations.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM ORIG 8 Notice of Changed Circumstances.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "FORM PROC 26 Condo PUD Homeowner Insurance Request.pdf": {
+            "directory": "banker/6-0 Closing/Forms"
+        },
+        "7-0 Operations Module.pdf": {
+            "directory": "banker/7-0 Operations"
+        },
+        "7-20 Disaster Recovery \u2013 Business Continuity Plan.pdf": {
+            "directory": "banker/7-0 Operations"
+        },
+        "7-A Employee Handbook.pdf": {
+            "directory": "banker/7-0 Operations"
+        },
+        "Approved Vendor Application.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Employee Roster.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Incoming Document Log.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Leave Tracking.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Loan Officer Tracking Sheet.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "New Hire Reference Check Form.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Office Supply List.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Outgoing Document Log.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Performance Appraisal - Training Cover.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Performance Appraisal.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Time Sheet for Non-Exempt Employees.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Time Sheet.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Title 1 Dealer Contractor Approval Checklist.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Title I Dealer Contractor Approval.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "Vendor Approval - Renewal Application.pdf": {
+            "directory": "banker/7-0 Operations/Forms"
+        },
+        "1-A Broker MiniC QC Plan.docx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan"
+        },
+        "CHART 4-51 PROC Document Naming Convention (1).xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "Complete Application Checklist (Notice of Incomplete Application).docx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "File Stack Order - Conventional.xls": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-05 QC Occupancy Re-Verification.doc": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-4 QC PROC Closed File Pre-Audit Compliance Checklist.docx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-5 Non-Del Quality Control Summary Report.xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-5 Quality Control Report.docx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-65 ORIG PROC UW CLOS QC Fraud - Red Flag Checklist.docx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-65 QC ORIG PROC UW CLOS Fraud Red Flags Checklist.doc": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-70 QC PROC UW CLOS AML Red Flags Checklist.docx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-70-1 QC AML-BSA Self Audit Checklist.xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-70-6 Beneficial Interest Appendix A .docx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-70-7 AML Risk Assessment .xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 1-80 QC COMP Mortgage Risk Assessment (1).xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 3-1 ORIG PROC UW COMP Complete Application Checklist (Notice of Incomplete Application).docx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 4-1 PROC UW QC Processing Underwriting Quality Control Production Checklist 3-2021.xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM 4-33 PROC UW QCProcessing Underwriting Quality Control Production Checklist.xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM PROC 4-32 Basic Loan Submission Process Checklist.xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "FORM PROC UW QC 4-33 Processing Underwriting Quality Control Production Checklist.xlsx": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "Master Production and Audit Quality Control Checklist.xls": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "Pre-Underwriting Production Checklist - QC Master.xls": {
+            "directory": "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms"
+        },
+        "2-0 Compliance Policies and Procedures.docx": {
+            "directory": "broker compliance/2-0 Compliance"
+        },
+        "Compliance Audit Checklist.xls": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "Compliance Manager Duties and Schedule.xlsx": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FACTA Disclosure Sample.doc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 1-20 QC COMP OP HUD Site Review Checklist Form.doc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 1-65 QC COMP CFPB Examination Elements Matrix.doc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 2-35-26 COMP ORIG Reverse Mortgage Disclosure Sample.docx": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 2-71-1 ORIG COMP Anti-Steering Borrowers Best Interest Disclosure Safe Harbor.xls": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 2-71-2 Current Compensation Plans.xlsx": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 2-71-2 LO Comp Plan - Commissions - Individual.docx": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 2-73-2 COMP ORIG PROC Borrower AIR Appraisal Notice.doc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 2-81 COMP OPS ORIG Complaint Report and Log.xls": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 2-81 Complaint report.doc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 3-10 Loan Officer Compensation Plan Template Sample - REVIEW WITH COUNSEL.docx": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 3-10 ORIG COMP Loan Officer Compensation Plan Draft 9-2013.gdoc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 3-15 ORIG PROC UW CLOS COMP QC Notice of Changed Circumstances.doc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 3-21 ORIG COMPL Advertising and Website Review Checklist.xlsx": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 4-31 COMP ORIG PROC Borrower Appraisal Notice.docx": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "FORM 7-26-1 OPS COMP New Hire Checklist.docx": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "Non Traditional Loan Comparison Chart For Anti-Predatory Lending.doc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "Section 32 High Cost Worksheet.xls": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "Tangible Net Benefit Certification.doc": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "TRAIN 2-40 Fair Lending Laws.ppt": {
+            "directory": "broker compliance/2-0 Compliance/Compliance Forms"
+        },
+        "11-18-22 AIR Update.htm": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-01 Compliance Manager - Duties and Responsibilities.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-02 Federal Regulatory Compliance Program Overview.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-05 State Regulatory Compliance - Regulatory Highlight Checklist.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-10 RESPA Overview.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-11 RESPA - Prohibited - Kickbacks and Referral Fees.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-14 TRID Policies and Procedures.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-15 Reviewing Closing Disclosure CD or HUD-1 against LE-GFE Estimates.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-31 - TIL APR (Annual Percentage Rate) Calculations and Tolerance.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-32 TIL Additional Disclosures.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-33 Notice of Right to Cancel (Right to Rescind).docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-34 Advertising.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-35 Unfair Deceptive Abusive Acts and Practices - High Cost Loans - Predatory Lending.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-35-61 HPML Appraisal Policy.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-36 Mortgage Disclosure Improvement Act.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-37 Ability to Repay.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-40 Equal Credit Opportunity Act.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-42 HMDA Home Mortgage Disclosure Act.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-43 Fair Housing Act.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-44 Fair Credit Reporting Act.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-44-2 Credit Report Ordering Policies and Procedures.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-45 FACTA Overview.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-46 Homeowners Protection Act (PMI Cancellation).docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-47 Gramm-Leach-Bliley Privacy Act.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-47-2 PATRIOT Act and OFAC Policies and Procedures.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-48 E-SIGN Mortgage Procedures and Policies.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-70 SAFE Act.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-70-15 NMLS Call Reporting Process.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-71 Compensation and Anti-Steering.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-72 Pre- and Post-Employment Screening Procedure.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-72-4 Employee Training Policies and Procedures.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-73 Appraiser Independence Process.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-80 Complaint Resolution.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-81 Complaint Form Resolution and Report.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-97 Disaster Recovery and Business Continuity.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-A Policy in Practice QuickNotes.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-NY New York State Compliance Program.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "3-83 Ethics Policies and Procedures.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "3-84 Whistleblower Policy.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "7-10 Social Media Policy.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "PIP 2-90 IT Security Policies and Procedures.docx": {
+            "directory": "broker compliance/2-0 Compliance Indexed"
+        },
+        "2-90 IT Safeguarding and ID Theft.docx": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft"
+        },
+        "Annual ITCyber Security Audit Customers.htm.htm": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft"
+        },
+        "Remote Work Policy Update.htm.htm": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft"
+        },
+        "2-90 FACTA-IDTheft-InfoSecurity.PPT": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-90-25 IT Security Inventory.xlsx": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-91-1 IT Vendor Review Checklist.docx": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-92 Data Breach Analysis and Report.xlsx": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-92-3 IT Information Security Vendor Program Verification.xls": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-93-4 Red Flag Issue Report Form.doc": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-94-1 Remote Work Setup Checklist.xlsx": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-97-1 Disaster Preparation Checklist_Pre-Drill Assessment (2).xlsx": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "FORM 2-97-2 Fire Drill_Disaster Checklist and Report (1).xlsx": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "Red Flag Matrix.xls": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        },
+        "Red Flag Plan Checklist.xls": {
+            "directory": "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits"
+        }
+    },
+    "directories": {
+        "banker": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "broker compliance": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-broker-compliance"
+            ]
+        },
+        "/": {
+            "groups": [
+                "eg-admin",
+                "mm-admin"
+            ]
+        },
+        "banker/1-0 Lender-Banker Quality Control": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/1-0 Lender-Banker Quality Control/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/1-A Broker Mini-C Non-Delegated QC Plan": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/1-A Broker Mini-C Non-Delegated QC Plan/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/2-0 Compliance": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/2-0 Compliance/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/2-0 Compliance Indexed": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/2-90 Information Security amd ID Theft": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/2-90 Information Security amd ID Theft/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/3-0 Origination": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/3-0 Origination/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/4-0 Processing": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/4-0 Processing/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/5-0 Underwriting": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/5-0 Underwriting/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/6-0 Closing": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/6-0 Closing/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/7-0 Operations": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "banker/7-0 Operations/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-banker"
+            ]
+        },
+        "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-broker-compliance"
+            ]
+        },
+        "broker compliance/1-A Broker Mini-C Non-Delegated QC Plan/Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-broker-compliance"
+            ]
+        },
+        "broker compliance/2-0 Compliance": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-broker-compliance"
+            ]
+        },
+        "broker compliance/2-0 Compliance/Compliance Forms": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-broker-compliance"
+            ]
+        },
+        "broker compliance/2-0 Compliance Indexed": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-broker-compliance"
+            ]
+        },
+        "broker compliance/2-90 Information Security and ID Theft": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-broker-compliance"
+            ]
+        },
+        "broker compliance/2-90 Information Security and ID Theft/Forms and Exhibits": {
+            "groups": [
+                "eg-admin",
+                "mm-admin",
+                "mm-broker-compliance"
+            ]
+        }
+    },
+    "groups": [
+        "eg-admin",
+        "mm-admin",
+        "mm-banker",
+        "mm-broker-compliance"
+    ]
+}
